@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ImageCarousel from "@/components/ui/ImageCarousel";
 import { ASSETS, type AssetId } from "@/lib/assets";
 
 type Props = {
@@ -12,10 +13,7 @@ type Props = {
   bare?: boolean;
 };
 
-/**
- * public/assets/ 에 파일이 준비된 슬롯은 next/image 로,
- * 아직 없는 슬롯은 SPEC의 ID를 표시한 회색 플레이스홀더로 렌더한다.
- */
+/** SPEC §10 — 슬롯 ID 로 이미지를 꺼내 렌더한다. 배열 슬롯은 캐러셀이 된다. */
 export default function AssetSlot({
   id,
   className = "",
@@ -23,14 +21,26 @@ export default function AssetSlot({
   sizes = "(max-width: 768px) 100vw, 50vw",
   bare = false,
 }: Props) {
-  const asset = ASSETS[id];
+  const entry = ASSETS[id];
 
-  if (asset.src && asset.width && asset.height && bare) {
+  if (Array.isArray(entry)) {
+    return (
+      <ImageCarousel
+        images={entry}
+        sizes={sizes}
+        className={`overflow-hidden ${className}`}
+      />
+    );
+  }
+
+  const asset = entry;
+
+  if (bare) {
     // 래퍼 없이 이미지만. max-w/max-h 를 함께 걸면 비율이 유지된다.
     return (
       <Image
         src={asset.src}
-        alt={asset.label}
+        alt={asset.alt}
         width={asset.width}
         height={asset.height}
         sizes={sizes}
@@ -40,33 +50,18 @@ export default function AssetSlot({
     );
   }
 
-  if (asset.src && asset.width && asset.height) {
-    const contain = asset.fit === "contain";
-    return (
-      <div className={`overflow-hidden ${contain ? "bg-surface" : ""} ${className}`}>
-        <Image
-          src={asset.src}
-          alt={asset.label}
-          width={asset.width}
-          height={asset.height}
-          sizes={sizes}
-          priority={priority}
-          className={`h-full w-full ${contain ? "object-contain" : "object-cover"}`}
-        />
-      </div>
-    );
-  }
-
+  const contain = asset.fit === "contain";
   return (
-    <div
-      role="img"
-      aria-label={`${id} — ${asset.label} (이미지 준비 중)`}
-      className={`flex flex-col items-center justify-center gap-1 border border-dashed border-line bg-surface ${className}`}
-    >
-      <span className="label-en text-caption">{id}</span>
-      <span className="px-4 text-center text-xs text-caption">
-        {asset.label}
-      </span>
+    <div className={`overflow-hidden ${contain ? "bg-surface" : ""} ${className}`}>
+      <Image
+        src={asset.src}
+        alt={asset.alt}
+        width={asset.width}
+        height={asset.height}
+        sizes={sizes}
+        priority={priority}
+        className={`h-full w-full ${contain ? "object-contain" : "object-cover"}`}
+      />
     </div>
   );
 }

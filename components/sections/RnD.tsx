@@ -39,7 +39,7 @@ export default function RnD() {
         </FadeIn>
       </div>
 
-      {/* 섹션 하단 가로 띠 — B-01 (제어보드 매크로). 촬영 시 B-03(제어함 내부)으로 대체 가능. */}
+      {/* 섹션 하단 가로 띠 — B-01 제어반 시제품 (SPEC §10) */}
       <FadeIn delay={200} className="container-4g mt-12 md:mt-16">
         <AssetSlot
           id="B-01"

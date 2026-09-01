@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ASSETS } from "@/lib/assets";
+import { ASSETS, firstImage } from "@/lib/assets";
 
 type Props = {
   className?: string;
@@ -9,10 +9,10 @@ type Props = {
 
 /** SPEC §0 — 로고 표기는 `4GROWTH`. (SPEC §10, LOGO) */
 export default function Logo({ className = "", variant = "color" }: Props) {
-  const asset = ASSETS.LOGO;
+  const asset = firstImage(ASSETS.LOGO);
   const src = variant === "white" ? asset.srcWhite : asset.src;
 
-  if (src && asset.width && asset.height) {
+  if (src) {
     return (
       <Image
         src={src}
