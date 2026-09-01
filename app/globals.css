@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* 고정 헤더 높이만큼 앵커 오프셋 */
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-weight: 400;
+  }
+
+  ::selection {
+    @apply bg-blue text-white;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* SPEC §1 — 컨테이너 최대폭 1200px */
+  .container-4g {
+    @apply mx-auto w-full max-w-container px-5 md:px-8;
+  }
+
+  /* SPEC §1 — 섹션 상하 py-24 (모바일 py-16) */
+  .section-4g {
+    @apply py-16 md:py-24;
+  }
+
+  /* SPEC §1 — 영문 라벨: 대문자 + letter-spacing 0.08em */
+  .label-en {
+    @apply text-xs font-bold uppercase tracking-label md:text-[13px];
+  }
+}
