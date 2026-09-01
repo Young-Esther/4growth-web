@@ -49,7 +49,6 @@ export default function Contact() {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    // TODO(SPEC §12): Formspree endpoint 를 .env 로 주입 (수신: 4orgrow@gmail.com)
     const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
     if (!endpoint) {

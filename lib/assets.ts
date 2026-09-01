@@ -53,7 +53,6 @@ export const ASSETS: Record<AssetId, AssetEntry> = {
     height: 1020,
     fit: "contain",
   },
-  // TODO(SPEC §10): S-01 은 카탈로그 7p 캡처. 최신 GUI로 갱신할지 확인 필요.
   "S-01": {
     label: "AI Farm OS 화면",
     src: "/assets/farm-os.png",
