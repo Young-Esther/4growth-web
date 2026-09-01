@@ -38,11 +38,12 @@ export const ASSETS: Record<AssetId, AssetEntry> = {
     height: 1086,
     fit: "contain",
   },
+  // 라벨 없는 도면으로 교체됨 — 부품 라벨은 TechDetail에서 HTML로 병기한다.
   "I-03": {
     label: "A-Block 아이소메트릭 구조도",
     src: "/assets/a-block-structure.png",
-    width: 1958,
-    height: 1842,
+    width: 1331,
+    height: 1710,
     fit: "contain",
   },
   "I-04": {

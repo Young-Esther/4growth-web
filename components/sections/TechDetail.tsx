@@ -54,6 +54,19 @@ const A_POINTS = [
   { no: "04", title: "반개방형 설계", desc: "자연광 활용, 밀폐형 대비 에너지 절감" },
 ];
 
+/**
+ * 카탈로그 5p 구조도 부품 라벨. 도면(I-03)이 라벨 없는 버전으로 교체되어
+ * 순서·문구 그대로 HTML로 병기한다.
+ */
+const A_STRUCTURE_LABELS = [
+  "광량 센서",
+  "알루미늄 프로파일 프레임",
+  "LED 조명부",
+  "폴리카보네이트 패널 (반개방형)",
+  "재배 트레이 및 배관",
+  "제어부 (센서 · 제어 통합)",
+];
+
 /** SPEC §4 (03-B) — 좌측 플로우를 캡션 5줄로 축약 */
 const DLIGHT_FLOW = [
   "자연광 유입",
@@ -112,7 +125,21 @@ export default function TechDetail() {
         }
         visual={
           <div className="space-y-4">
-            <AssetSlot id="I-03" className="aspect-[4/3] w-full rounded-2xl" />
+            {/* 도면 + 부품 라벨. 데스크톱은 우측, 모바일은 아래. */}
+            <div className="grid gap-5 sm:grid-cols-[1.1fr_1fr] sm:items-center sm:gap-6">
+              <AssetSlot
+                id="I-03"
+                sizes="(max-width: 640px) 100vw, 30vw"
+                className="aspect-[1331/1710] w-full rounded-2xl"
+              />
+              <ul className="divide-y divide-dashed divide-line border-y border-dashed border-line">
+                {A_STRUCTURE_LABELS.map((l) => (
+                  <li key={l} className="py-2.5 text-[13px] leading-snug text-caption">
+                    {l}
+                  </li>
+                ))}
+              </ul>
+            </div>
             {/* I-04 이미지 안에 1 MODULE → 2 MODULES → 3 MODULES 라벨이 포함되어 있다. */}
             <AssetSlot id="I-04" className="aspect-[16/6] w-full rounded-2xl" />
           </div>

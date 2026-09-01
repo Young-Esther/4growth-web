@@ -8,6 +8,8 @@ type Props = {
   /** Hero 이미지만 true (SPEC §12) */
   priority?: boolean;
   sizes?: string;
+  /** 회색 박스·둥근 모서리 없이 이미지만 렌더 (Hero — 카탈로그 표지와 동일) */
+  bare?: boolean;
 };
 
 /**
@@ -19,8 +21,24 @@ export default function AssetSlot({
   className = "",
   priority = false,
   sizes = "(max-width: 768px) 100vw, 50vw",
+  bare = false,
 }: Props) {
   const asset = ASSETS[id];
+
+  if (asset.src && asset.width && asset.height && bare) {
+    // 래퍼 없이 이미지만. max-w/max-h 를 함께 걸면 비율이 유지된다.
+    return (
+      <Image
+        src={asset.src}
+        alt={asset.label}
+        width={asset.width}
+        height={asset.height}
+        sizes={sizes}
+        priority={priority}
+        className={`mx-auto h-auto w-auto max-w-full object-contain ${className}`}
+      />
+    );
+  }
 
   if (asset.src && asset.width && asset.height) {
     const contain = asset.fit === "contain";

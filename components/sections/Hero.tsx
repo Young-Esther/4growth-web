@@ -35,11 +35,13 @@ export default function Hero() {
         </FadeIn>
 
         <FadeIn delay={120}>
+          {/* 카탈로그 표지와 동일하게 회색 박스 없이 렌더링만 (v0.1 검토 반영) */}
           <AssetSlot
             id="I-01"
             priority
+            bare
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="aspect-[4/3] w-full rounded-2xl md:aspect-[5/4]"
+            className="max-h-[70vh]"
           />
         </FadeIn>
       </div>
