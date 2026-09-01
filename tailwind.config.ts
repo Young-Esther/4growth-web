@@ -13,7 +13,7 @@ const config: Config = {
         blue: "#4366B9",
         // 보조 회색
         surface: "#F4F5F7", // 카드 배경
-        caption: "#8A8F99", // 캡션
+        caption: "#6B7280", // 캡션 (흰 배경 4.83:1 / surface 4.43:1 — WCAG AA)
         // 파생 토큰: SPEC에 명시되지 않은 경계선 색. surface/caption 사이 값.
         line: "#E5E6EA",
         // 로고 그린 (AI 원본 추출). 로고 외에는 사용하지 않는다. (SPEC §1)
