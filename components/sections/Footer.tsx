@@ -18,31 +18,31 @@ const EMAIL = "4orgrow@gmail.com";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line">
+    <footer className="bg-ink text-white">
       <div className="container-4g py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           <div>
-            <Logo className="h-6 w-[120px]" />
-            <p className="mt-4 text-[15px] text-ink/80">
+            <Logo className="h-6" variant="white" />
+            <p className="mt-5 text-[15px] text-white/75">
               농업의 지속가능성을 기술로 설계합니다.
             </p>
           </div>
 
           <div>
-            <p className="label-en mb-5 text-caption">Company Information</p>
+            <p className="label-en mb-5 text-white/50">Company Information</p>
             <dl className="space-y-2.5 text-sm">
               {COMPANY.map((item) => (
                 <div key={item.label} className="flex gap-4">
-                  <dt className="w-16 shrink-0 text-caption">{item.label}</dt>
-                  <dd className="text-ink/80">{item.value}</dd>
+                  <dt className="w-16 shrink-0 text-white/50">{item.label}</dt>
+                  <dd className="text-white/85">{item.value}</dd>
                 </div>
               ))}
               <div className="flex gap-4">
-                <dt className="w-16 shrink-0 text-caption">이메일</dt>
+                <dt className="w-16 shrink-0 text-white/50">이메일</dt>
                 <dd>
                   <a
                     href={"mailto:" + EMAIL}
-                    className="text-ink/80 underline underline-offset-4 hover:text-blue"
+                    className="text-white/85 underline underline-offset-4 transition-colors hover:text-white"
                   >
                     {EMAIL}
                   </a>
@@ -52,7 +52,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-12 border-t border-line pt-6 text-xs text-caption">
+        <p className="mt-12 border-t border-white/15 pt-6 text-xs text-white/50">
           © 2026 4growth. All rights reserved.
         </p>
       </div>

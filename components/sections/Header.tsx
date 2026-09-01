@@ -43,7 +43,7 @@ export default function Header() {
     >
       <div className="container-4g flex h-[72px] items-center justify-between">
         <a href="#top" className="flex items-center" aria-label="4GROWTH 홈">
-          <Logo className="h-6 w-[120px]" />
+          <Logo className="h-6" />
         </a>
 
         <nav aria-label="주요 메뉴" className="hidden md:block">

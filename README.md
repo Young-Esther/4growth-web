@@ -33,16 +33,17 @@ Vercel에서는 두 변수를 Project Settings → Environment Variables에 등�
 ## 이미지 넣는 법
 
 이미지 슬롯은 `lib/assets.ts` 한 곳에서 관리한다. 파일을 `public/assets/`에 넣고
-해당 슬롯의 `src`를 채우면 회색 플레이스홀더가 `next/image`로 자동 교체된다.
+해당 슬롯의 `src`와 원본 픽셀 크기를 채우면 회색 플레이스홀더가 `next/image`로 자동 교체된다.
 
 ```ts
-"I-01": { label: "A-Block 메인 렌더링", src: "/assets/a-block-hero.webp" },
+"B-01": { label: "제어보드 매크로", src: "/assets/control-board.jpg", width: 2400, height: 1600 },
 ```
 
-현재 비어 있는 슬롯: `I-01` `I-03` `I-04` `S-01` `P-01` `B-01` `B-03` `LOGO`
-(+ OG 이미지 `public/assets/og.png`, favicon).
+연결 완료: `LOGO`(컬러/화이트) `I-01` `I-03` `I-04` `S-01` `P-01`, OG 이미지
+`public/assets/og.png`, favicon `app/icon.png`.
 
-`LOGO`가 비어 있는 동안 헤더·푸터는 `4GROWTH` 워드마크 텍스트로 표시된다.
+남은 플레이스홀더: `B-01`(제어보드 매크로) — 촬영 후 넣으면 R&D 하단 띠가 채워진다.
+`B-03`(제어함 내부)은 B-01 대체용으로 슬롯만 등록되어 있고 화면에는 쓰지 않는다.
 
 ## 남은 `[확인 필요]`
 
@@ -53,11 +54,10 @@ grep -rn "TODO(SPEC" app components lib
 ```
 
 - 도메인 (SPEC §0) — 카탈로그 인쇄 전 필수
-- 로고 그린 컬러값 (§1)
 - 회사명 · 소재지 · 대표번호 공개 여부 (§9)
 - 숫자 스트립 `~20 유통 매장`, `40 교육용 키트` (§5)
 - 친환경 화훼 인증 배지 (§5)
-- OG 이미지, favicon (§10, §11)
+- B-01 또는 B-03 촬영 (§10, 박람회 전 1장 필수)
 
 ## 구조
 

@@ -19,8 +19,7 @@ export const metadata: Metadata = {
     siteName: "4GROWTH",
     title: TITLE,
     description: DESCRIPTION,
-    // TODO(SPEC §10, OG): 1200×630 OG 이미지를 public/assets/og.png 에 넣는다.
-    //   (Hero 이미지 + 로고로 제작). 파일 전까지는 경로만 잡아 둔 상태.
+    // SPEC §10 (OG) — public/assets/og.png, 1200×630
     images: [{ url: "/assets/og.png", width: 1200, height: 630, alt: "4GROWTH" }],
   },
   alternates: { canonical: "/" },

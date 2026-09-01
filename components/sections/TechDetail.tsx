@@ -113,10 +113,8 @@ export default function TechDetail() {
         visual={
           <div className="space-y-4">
             <AssetSlot id="I-03" className="aspect-[4/3] w-full rounded-2xl" />
+            {/* I-04 이미지 안에 1 MODULE → 2 MODULES → 3 MODULES 라벨이 포함되어 있다. */}
             <AssetSlot id="I-04" className="aspect-[16/6] w-full rounded-2xl" />
-            <p className="label-en text-center text-caption">
-              1 Module → 2 Modules → 3 Modules
-            </p>
           </div>
         }
       />

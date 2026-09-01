@@ -22,16 +22,18 @@ export default function AssetSlot({
 }: Props) {
   const asset = ASSETS[id];
 
-  if (asset.src) {
+  if (asset.src && asset.width && asset.height) {
+    const contain = asset.fit === "contain";
     return (
-      <div className={`relative overflow-hidden ${className}`}>
+      <div className={`overflow-hidden ${contain ? "bg-surface" : ""} ${className}`}>
         <Image
           src={asset.src}
           alt={asset.label}
-          fill
+          width={asset.width}
+          height={asset.height}
           sizes={sizes}
           priority={priority}
-          className="object-cover"
+          className={`h-full w-full ${contain ? "object-contain" : "object-cover"}`}
         />
       </div>
     );

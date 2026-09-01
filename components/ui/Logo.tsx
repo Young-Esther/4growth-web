@@ -3,23 +3,27 @@ import { ASSETS } from "@/lib/assets";
 
 type Props = {
   className?: string;
-  /** 푸터 등 어두운 배경에서 사용 */
+  /** 어두운 배경에서 사용 (Footer) */
   variant?: "color" | "white";
 };
 
-/**
- * SPEC §0 — 로고 표기는 `4GROWTH`.
- * TODO(SPEC §10, LOGO): 로고 SVG(컬러/화이트)를 public/assets/ 에 넣고
- *   lib/assets.ts 의 LOGO.src 를 채우면 워드마크가 이미지로 교체된다.
- */
+/** SPEC §0 — 로고 표기는 `4GROWTH`. (SPEC §10, LOGO) */
 export default function Logo({ className = "", variant = "color" }: Props) {
   const asset = ASSETS.LOGO;
+  const src = variant === "white" ? asset.srcWhite : asset.src;
 
-  if (asset.src) {
+  if (src && asset.width && asset.height) {
     return (
-      <span className={`relative block ${className}`}>
-        <Image src={asset.src} alt="4GROWTH" fill className="object-contain object-left" />
-      </span>
+      <Image
+        src={src}
+        alt="4GROWTH"
+        width={asset.width}
+        height={asset.height}
+        // SVG는 이미지 최적화 대상이 아니므로 원본을 그대로 서빙한다.
+        unoptimized
+        priority
+        className={`w-auto ${className}`}
+      />
     );
   }
 
