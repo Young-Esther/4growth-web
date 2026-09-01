@@ -9,14 +9,14 @@ import SectionLabel from "@/components/ui/SectionLabel";
 
 /**
  * 숫자 스트립 — 검증된 것만 노출한다 (SPEC §5).
- * TODO(SPEC §5): `~20 유통 매장`, `40 교육용 스마트팜 키트 제작·수업` 은 `[확인 필요]`.
- *   확정 전까지 자리 자체를 만들지 않는다.
- * TODO(SPEC §5): 친환경 화훼 인증 `[확인 필요]` — 확정되면 숫자 스트립 옆 작은 배지 추가.
+ * 네 번째 칸은 친환경 화훼 인증 배지로, 숫자와 같은 스타일을 쓰되
+ * 문자열이 길어 값 글자만 한 단계 줄인다 (`wide`).
  */
-const STATS = [
+const STATS: { value: string; caption: string; wide?: boolean }[] = [
   { value: "4+", caption: "년 재배·출하 경험" },
   { value: "1", caption: "기술이전 (제2264047호)" },
   { value: "3", caption: "특허 출원" },
+  { value: "MPS-ABC", caption: "A등급 · 친환경 화훼 인증", wide: true },
 ];
 
 export default function Field() {
@@ -44,12 +44,18 @@ export default function Field() {
         </FadeIn>
 
         <FadeIn delay={120}>
-          <dl className="mt-12 grid grid-cols-1 gap-6 border-t border-line pt-10 sm:grid-cols-3">
+          <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line pt-10 sm:grid-cols-4">
             {STATS.map((s) => (
               <div key={s.caption}>
                 <dt className="sr-only">{s.caption}</dt>
                 <dd>
-                  <p className="text-[40px] font-bold leading-none text-blue md:text-[52px]">
+                  <p
+                    className={`flex h-[40px] items-end font-bold leading-none text-blue md:h-[52px] ${
+                      s.wide
+                        ? "text-[26px] tracking-tight md:text-[34px]"
+                        : "text-[40px] md:text-[52px]"
+                    }`}
+                  >
                     {s.value}
                   </p>
                   <p className="mt-3 text-sm text-caption">{s.caption}</p>
