@@ -98,7 +98,7 @@ export const ASSETS: Record<AssetId, AssetEntry> = {
   "B-01": {
     src: "/assets/board.jpg",
     width: 2400,
-    height: 800,
+    height: 436,
     alt: "포그로우스 제어반 시제품",
     fit: "cover",
   },
