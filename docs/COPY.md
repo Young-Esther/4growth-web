@@ -265,3 +265,18 @@
 | 이메일 4orgrow@gmail.com | Email 4orgrow@gmail.com | Email 4orgrow@gmail.com |
 | 팩스 0504-427-9339 | Fax +82-504-427-9339 | Fax +82-504-427-9339 |
 | © 2026 4growth. All rights reserved. | (동일) | (동일) |
+
+---
+
+## 이미지 alt [신규 · 번역 필요]
+
+화면에는 보이지 않고 스크린리더·검색엔진이 읽는다. KO는 현재 `lib/assets.ts` 문구 그대로다. EN/VI 열을 채우면 messages에 반영한다. (Field 사진 alt는 §홈 > Field에 있다.)
+
+| ID | 위치 | KO | EN | VI |
+|---|---|---|---|---|
+| I-01 | 홈 Hero | A-Block 메인 렌더링 | | |
+| I-03 | 기술 > A-Block 구조도 | A-Block 아이소메트릭 구조도 | | |
+| I-04 | 기술 > A-Block 모듈 확장 | 1 → 2 → 3 모듈 확장 | | |
+| S-01 | 기술 > AI Farm OS 화면 | AI Farm OS 화면 | | |
+| B-01 | 기술 > R&D 띠 | 포그로우스 제어반 시제품 | | |
+| LOGO | 헤더 · 푸터 로고 | 4GROWTH | | |
