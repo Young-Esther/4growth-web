@@ -10,5 +10,5 @@ export default createMiddleware(routing);
 
 export const config = {
   // API·Next 내부 경로·확장자가 있는 파일(sitemap.xml, robots.txt, 이미지 등)은 제외
-  matcher: ["/((?!api|_next|_vercel|.*\..*).*)"],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };
