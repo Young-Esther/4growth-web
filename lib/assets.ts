@@ -1,7 +1,8 @@
 /**
- * SPEC §10 — 사진·이미지 준비 목록.
+ * SPEC §10 (v0.1), §6 (v0.2) — 사진·이미지 준비 목록.
  *
  * 슬롯 값이 배열이면 AssetSlot 이 캐러셀로, 단일 객체면 next/image 한 장으로 렌더한다.
+ * 값이 null 이면 아직 파일이 없는 슬롯이다. AssetSlot 은 아무것도 렌더하지 않는다.
  */
 export type AssetId =
   | "I-01"
@@ -10,7 +11,11 @@ export type AssetId =
   | "S-01"
   | "P-01"
   | "B-01"
-  | "LOGO";
+  | "LOGO"
+  // v0.2 차담 (SPEC §6). 경로: public/assets/chadam/
+  | "CH-01"
+  | "CH-02"
+  | "CH-03";
 
 export type AssetImage = {
   /** public 기준 경로 */
@@ -33,7 +38,12 @@ export function firstImage(entry: AssetEntry): AssetImage {
   return Array.isArray(entry) ? entry[0] : entry;
 }
 
-export const ASSETS: Record<AssetId, AssetEntry> = {
+/** 파일이 들어온 슬롯인지 */
+export function hasAsset(id: AssetId): boolean {
+  return ASSETS[id] !== null;
+}
+
+export const ASSETS: Record<AssetId, AssetEntry | null> = {
   // 카탈로그 1p A-Block 메인 렌더링. 박람회 후 실사로 교체 예정 (SPEC §2).
   "I-01": {
     src: "/assets/a-block-hero.png",
@@ -110,4 +120,13 @@ export const ASSETS: Record<AssetId, AssetEntry> = {
     alt: "4GROWTH",
     fit: "contain",
   },
+  // TODO(SPEC 0-1, §6 CH-01 · 필수): 차담 세트 전체 사진 (정면, 흰 배경) — set.jpg.
+  //   들어오면 { src: "/assets/chadam/set.jpg", width, height, alt, fit: "cover" } 로 채운다.
+  //   차담 Hero · 브랜드 카드 · 홈 미리보기가 자동으로 사진을 표시한다. 사진 전에는 main 머지 금지.
+  //   alt 문구는 COPY 에 없으므로 함께 받아야 한다.
+  "CH-01": null,
+  // TODO(SPEC §6 CH-02 · 권장): 4종 티백 나란히 — 차담 패키지 섹션.
+  "CH-02": null,
+  // TODO(SPEC §6 CH-03 · 선택): 연출컷 (테이블·찻잔) — 차담 패키지 캐러셀.
+  "CH-03": null,
 };

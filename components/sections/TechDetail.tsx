@@ -1,10 +1,14 @@
 import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import AssetSlot from "@/components/ui/AssetSlot";
 import FadeIn from "@/components/ui/FadeIn";
 import StatusPill from "@/components/ui/StatusPill";
 import DLightGraph from "@/components/diagrams/DLightGraph";
 
-/** SPEC §4 — SECTION 03. 3카드 세로 배치, 카드마다 좌우 반전. 모바일은 텍스트 → 이미지. */
+/**
+ * SPEC §4 (v0.1) — 세 기술 상세. 3카드 세로 배치, 카드마다 좌우 반전. 모바일은 텍스트 → 이미지.
+ * v0.2: 기술 페이지로 이동. 카드 앵커 id `a-block` `dlight` `farm-os` (SPEC §3-2).
+ */
 
 type CardProps = {
   id: string;
@@ -47,42 +51,7 @@ function TechCard({
   );
 }
 
-const A_POINTS = [
-  { no: "01", title: "모듈형 구조", desc: "현장 조립·해체, 이설 가능" },
-  { no: "02", title: "단계적 확장", desc: "모듈 단위로 규모 조정" },
-  { no: "03", title: "통합 제어", desc: "센서·제어부 내장" },
-  { no: "04", title: "반개방형 설계", desc: "자연광 활용, 밀폐형 대비 에너지 절감" },
-];
-
-/**
- * 카탈로그 5p 구조도 부품 라벨. 도면(I-03)이 라벨 없는 버전으로 교체되어
- * 순서·문구 그대로 HTML로 병기한다.
- */
-const A_STRUCTURE_LABELS = [
-  "광량 센서",
-  "알루미늄 프로파일 프레임",
-  "LED 조명부",
-  "폴리카보네이트 패널 (반개방형)",
-  "재배 트레이 및 배관",
-  "제어부 (센서 · 제어 통합)",
-];
-
-/** SPEC §4 (03-B) — 좌측 플로우를 캡션 5줄로 축약 */
-const DLIGHT_FLOW = [
-  "자연광 유입",
-  "센서 측정",
-  "누적 DLI 산출",
-  "목표와 비교",
-  "부족분만 LED 출력",
-];
-
-const FARM_OS_FEATURES = [
-  "환경 모니터링 (온습도 · CO₂ · 광량)",
-  "DLI 누적 및 광량 관리",
-  "장치 제어",
-  "재배 이력 및 생육 데이터 관리",
-  "재배 리포트 자동 생성",
-];
+type Point = { no: string; title: string; desc: string };
 
 const DATA_FLOW = ["FARM", "SENSOR", "DATA", "AI", "CONTROL"];
 
@@ -103,18 +72,33 @@ function CheckIcon() {
 }
 
 export default function TechDetail() {
+  const t = useTranslations("technology");
+  const label = useTranslations("labels");
+
+  const aPoints = t.raw("aBlock.points") as Point[];
+  /**
+   * 카탈로그 5p 구조도 부품 라벨. 도면(I-03)이 라벨 없는 버전이라 HTML로 병기한다.
+   * COPY §기술 > 구조도 캡션 한 줄을 ` · ` 로 나눠 목록으로 쓴다.
+   */
+  const structureLabels = t("aBlock.structure").split(" · ");
+  /** SPEC §4 (03-B) — 좌측 플로우 캡션 5줄 */
+  const dlightFlow = t.raw("dlight.flow") as string[];
+  const farmOsFeatures = t.raw("farmOs.features") as string[];
+  /** 데이터 흐름 번역 (en 은 빈 값 — 영문 스트립만 표시, COPY §AI Farm OS) */
+  const farmOsFlow = t("farmOs.flow");
+
   return (
     <section className="container-4g pb-4">
-      {/* 03-A. A-Block */}
+      {/* A-Block */}
       <TechCard
         id="a-block"
-        label="A-Block — Modular Growing Space"
-        headline="필요한 만큼 짓고, 필요한 곳으로 옮깁니다."
-        body="A-Block은 알루미늄 프로파일 프레임과 폴리카보네이트 패널로 구성된 반개방형 모듈 재배 유닛입니다. 현장에서 조립·해체할 수 있고, 규모에 따라 모듈 단위로 확장됩니다. 센서와 제어부가 모듈 안에 통합되어 있어 별도의 설비 공사 없이 재배 환경을 관리할 수 있습니다."
-        pills={<StatusPill>개발 중 · 시제품 제작 단계</StatusPill>}
+        label={label("aBlock")}
+        headline={t("aBlock.headline")}
+        body={t("aBlock.body")}
+        pills={<StatusPill>{t("aBlock.status")}</StatusPill>}
         extra={
           <ul className="mt-8 grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
-            {A_POINTS.map((p) => (
+            {aPoints.map((p) => (
               <li key={p.no}>
                 <p className="label-en text-caption">{p.no}</p>
                 <p className="mt-1.5 text-[15px] font-bold">{p.title}</p>
@@ -133,7 +117,7 @@ export default function TechDetail() {
                 className="aspect-[1331/1710] w-full rounded-2xl"
               />
               <ul className="divide-y divide-dashed divide-line border-y border-dashed border-line">
-                {A_STRUCTURE_LABELS.map((l) => (
+                {structureLabels.map((l) => (
                   <li key={l} className="py-2.5 text-[13px] leading-snug text-caption">
                     {l}
                   </li>
@@ -146,22 +130,22 @@ export default function TechDetail() {
         }
       />
 
-      {/* 03-B. DLight */}
+      {/* DLight */}
       <TechCard
         id="dlight"
         reversed
-        label="DLight — DLI-based Light Control"
-        headline="식물은 빛이 계속 필요한 것이 아니라, 필요한 만큼의 빛이 필요합니다."
-        body="작물마다 하루에 필요한 누적 광량(DLI)이 다릅니다. 고정 타이머 방식은 자연광이 충분한 날에도 같은 시간만큼 LED를 켭니다. DLight는 유입되는 자연광을 실시간으로 측정하고, 목표 광량에서 부족한 만큼만 LED로 보충합니다."
+        label={label("dlight")}
+        headline={t("dlight.headline")}
+        body={t("dlight.body")}
         pills={
           <>
-            <StatusPill>개발 중 · 현장 검증 진행 중</StatusPill>
-            <StatusPill tone="blue">특허 출원</StatusPill>
+            <StatusPill>{t("dlight.status")}</StatusPill>
+            <StatusPill tone="blue">{t("dlight.patent")}</StatusPill>
           </>
         }
         extra={
           <ol className="mt-8 space-y-2.5">
-            {DLIGHT_FLOW.map((step, i) => (
+            {dlightFlow.map((step, i) => (
               <li key={step} className="flex items-start gap-3 text-sm text-ink/80">
                 <span className="label-en mt-[3px] w-6 shrink-0 text-caption">
                   {String(i + 1).padStart(2, "0")}
@@ -173,20 +157,29 @@ export default function TechDetail() {
         }
         visual={
           <div className="rounded-2xl border border-line bg-surface p-4 md:p-6">
-            <DLightGraph />
+            <DLightGraph
+              summary={t("dlight.summary")}
+              labels={{
+                time: t("dlight.graph.time"),
+                light: t("dlight.graph.light"),
+                natural: t("dlight.graph.natural"),
+                led: t("dlight.graph.led"),
+                target: t("dlight.graph.target"),
+              }}
+            />
           </div>
         }
       />
 
-      {/* 03-C. AI Farm OS */}
+      {/* AI Farm OS */}
       <TechCard
-        id="ai-farm-os"
-        label="AI Farm OS — Data & Control"
-        headline="하나의 농장을 하나의 시스템에서"
-        body="센서가 수집한 환경 데이터와 재배 기록은 AI Farm OS에 모입니다. 환경 모니터링, 광량 관리, 장치 제어, 재배 이력을 한 화면에서 관리하고, 축적된 데이터를 기반으로 재배 리포트를 자동 생성합니다."
+        id="farm-os"
+        label={label("farmOs")}
+        headline={t("farmOs.headline")}
+        body={t("farmOs.body")}
         extra={
           <ul className="mt-8 space-y-3">
-            {FARM_OS_FEATURES.map((f) => (
+            {farmOsFeatures.map((f) => (
               <li key={f} className="flex items-start gap-3 text-[15px] text-ink/80">
                 <CheckIcon />
                 {f}
@@ -213,6 +206,9 @@ export default function TechDetail() {
                 </li>
               ))}
             </ol>
+            {farmOsFlow && (
+              <p className="-mt-3 text-center text-xs text-caption">{farmOsFlow}</p>
+            )}
           </div>
         }
       />

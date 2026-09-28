@@ -1,36 +1,34 @@
+import { useTranslations } from "next-intl";
 import AssetSlot from "@/components/ui/AssetSlot";
 import FadeIn from "@/components/ui/FadeIn";
+import { Link } from "@/i18n/navigation";
 
-/** SPEC §2 — SECTION 01 HERO */
+/** SPEC §2 (v0.1) — HERO. v0.2 §3-1: CTA 는 /technology · /contact 페이지로 이동. */
 export default function Hero() {
+  const t = useTranslations("home.hero");
   return (
     <section id="top" className="pt-[72px]">
       <div className="container-4g grid items-center gap-10 py-12 md:min-h-[85vh] md:grid-cols-2 md:gap-14 md:py-24">
         <FadeIn>
-          <p className="label-en mb-5 text-blue">
-            Technology for Sustainable Agriculture
-          </p>
-          <h1 className="text-[32px] font-bold leading-[1.25] tracking-[-0.01em] md:text-[52px]">
-            농업의 지속가능성을
-            <br />
-            기술로 설계합니다
+          <p className="label-en mb-5 text-blue">{t("label")}</p>
+          {/* v0.1 의 수동 <br /> 대신 균형 줄바꿈 — 문장을 원고 그대로 유지하면서 두 줄로 나눈다. */}
+          <h1 className="text-balance text-[32px] font-bold leading-[1.25] tracking-[-0.01em] md:text-[52px]">
+            {t("title")}
           </h1>
-          <p className="mt-6 text-base leading-relaxed text-ink/80 md:text-lg">
-            농업 현장에서 발견한 문제를 하드웨어와 소프트웨어로 해결합니다.
-          </p>
+          <p className="mt-6 text-base leading-relaxed text-ink/80 md:text-lg">{t("body")}</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <a
-              href="#technology"
+            <Link
+              href="/technology"
               className="inline-flex h-12 items-center justify-center rounded-full bg-blue px-7 text-sm font-bold text-white transition-opacity hover:opacity-90"
             >
-              기술 알아보기
-            </a>
-            <a
-              href="#contact"
+              {t("ctaTechnology")}
+            </Link>
+            <Link
+              href="/contact"
               className="inline-flex h-12 items-center justify-center rounded-full border border-ink px-7 text-sm font-bold text-ink transition-colors hover:bg-ink hover:text-white"
             >
-              프로젝트 문의
-            </a>
+              {t("ctaContact")}
+            </Link>
           </div>
         </FadeIn>
 

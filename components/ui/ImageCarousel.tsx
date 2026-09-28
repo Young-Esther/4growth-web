@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export type CarouselImage = {
   src: string;
@@ -38,6 +39,7 @@ export default function ImageCarousel({
   className = "",
   sizes = "100vw",
 }: Props) {
+  const t = useTranslations("common");
   const trackRef = useRef<HTMLUListElement>(null);
   const slideRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [current, setCurrent] = useState(0);
@@ -104,13 +106,7 @@ export default function ImageCarousel({
   }
 
   return (
-    <div
-      className={`relative ${className}`}
-      style={{ aspectRatio: aspect }}
-      role="group"
-      aria-roledescription="캐러셀"
-      aria-label="포그로우스 현장 사진"
-    >
+    <div className={`relative ${className}`} style={{ aspectRatio: aspect }} role="group">
       <ul
         ref={trackRef}
         tabIndex={0}
@@ -124,7 +120,6 @@ export default function ImageCarousel({
               slideRefs.current[index] = el;
             }}
             className="h-full w-full shrink-0 snap-start"
-            aria-roledescription="슬라이드"
             aria-label={`${index + 1} / ${images.length}`}
           >
             <Image
@@ -143,7 +138,7 @@ export default function ImageCarousel({
       {/* 데스크톱 전용 화살표 — 모바일은 스와이프로 넘긴다. */}
       <button
         type="button"
-        aria-label="이전 사진"
+        aria-label={t("prevPhoto")}
         disabled={current === 0}
         onClick={() => goTo(current - 1)}
         className="absolute left-4 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-ink shadow-sm transition-opacity hover:bg-white disabled:pointer-events-none disabled:opacity-0 md:flex"
@@ -152,7 +147,7 @@ export default function ImageCarousel({
       </button>
       <button
         type="button"
-        aria-label="다음 사진"
+        aria-label={t("nextPhoto")}
         disabled={current === images.length - 1}
         onClick={() => goTo(current + 1)}
         className="absolute right-4 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-ink shadow-sm transition-opacity hover:bg-white disabled:pointer-events-none disabled:opacity-0 md:flex"
@@ -165,7 +160,7 @@ export default function ImageCarousel({
           <button
             key={image.src}
             type="button"
-            aria-label={`${index + 1}번째 사진 보기`}
+            aria-label={`${index + 1} / ${images.length}`}
             aria-current={index === current ? "true" : undefined}
             onClick={() => goTo(index)}
             className={`h-2 rounded-full transition-all ${

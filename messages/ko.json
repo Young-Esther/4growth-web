@@ -1,0 +1,263 @@
+{
+  "common": {
+    "nav": {
+      "technology": "기술",
+      "business": "사업영역",
+      "news": "소식",
+      "contact": "문의"
+    },
+    "language": "언어",
+    "menuOpen": "메뉴 열기",
+    "menuClose": "메뉴 닫기",
+    "prevPhoto": "이전 사진",
+    "nextPhoto": "다음 사진",
+    "learnMore": "자세히 보기",
+    "viewAll": "전체 보기"
+  },
+  "labels": {
+    "technology": "Technology",
+    "field": "Field",
+    "rnd": "R&D",
+    "business": "Business",
+    "applications": "Applications",
+    "brands": "Brands",
+    "news": "News",
+    "contact": "Contact",
+    "brandChadam": "Brand — Chadam",
+    "companyInfo": "Company Information",
+    "aBlock": "A-Block — Modular Growing Space",
+    "dlight": "DLight — DLI-based Light Control",
+    "farmOs": "AI Farm OS — Data & Control"
+  },
+  "meta": {
+    "title": "4growth 포그로우스 — 모듈형 스마트팜 A-Block · DLight · AI Farm OS",
+    "description": "농업 현장에서 발견한 문제를 하드웨어와 소프트웨어로 해결합니다. 모듈형 스마트팜 A-Block, DLI 기반 LED 제어 DLight, 재배 데이터 통합 플랫폼 AI Farm OS.",
+    "chadamTitle": "차담 — 시간을 마시다 | 4growth"
+  },
+  "home": {
+    "hero": {
+      "title": "농업의 지속가능성을 기술로 설계합니다",
+      "label": "Technology for Sustainable Agriculture",
+      "body": "농업 현장에서 발견한 문제를 하드웨어와 소프트웨어로 해결합니다.",
+      "ctaTechnology": "기술 알아보기",
+      "ctaContact": "프로젝트 문의"
+    },
+    "field": {
+      "title": "기술의 출발점은 책상이 아니라 현장입니다",
+      "body": "포그로우스는 농업 현장에서 직접 작물을 생산하고 유통해 왔습니다. 화훼 재배와 유통 협력 현장을 통해 축적한 4년 이상의 재배·출하 경험은 우리가 만드는 기술의 기준이 됩니다. 어떤 데이터를 측정해야 하는지, 어떤 자동화가 실제로 필요한지는 현장에서 반복해서 부딪혀 본 뒤에야 알 수 있습니다.",
+      "stats": [
+        { "value": "4+", "caption": "년 재배·출하 경험" },
+        { "value": "1", "caption": "기술이전 (제2264047호)" },
+        { "value": "3", "caption": "특허 출원" },
+        { "value": "MPS-ABC", "caption": "A등급 · 친환경 화훼 인증" }
+      ],
+      "altLisianthus": "포그로우스 현장의 리시안셔스",
+      "altGerbera": "포그로우스 현장의 거베라"
+    },
+    "preview": {
+      "applications": "기술 적용처",
+      "brands": "브랜드"
+    },
+    "latestNews": "최신 소식",
+    "cta": {
+      "title": "함께할 프로젝트를 찾고 있습니다",
+      "process": "상담 신청 → 담당자 확인 → 미팅 → 범위 검토",
+      "button": "상담 신청"
+    }
+  },
+  "technology": {
+    "stack": {
+      "title": "하나의 농장을 구성하는 세 가지 기술",
+      "body": "재배 공간, 광 제어, 운영 데이터. 세 기술은 따로 팔리는 제품이 아니라 하나의 농장을 구성하는 한 시스템입니다.",
+      "space": "공간",
+      "control": "제어",
+      "operations": "운영 · 데이터"
+    },
+    "aBlock": {
+      "headline": "필요한 만큼 짓고, 필요한 곳으로 옮깁니다.",
+      "body": "A-Block은 알루미늄 프로파일 프레임과 폴리카보네이트 패널로 구성된 반개방형 모듈 재배 유닛입니다. 현장에서 조립·해체할 수 있고, 규모에 따라 모듈 단위로 확장됩니다. 센서와 제어부가 모듈 안에 통합되어 있어 별도의 설비 공사 없이 재배 환경을 관리할 수 있습니다.",
+      "points": [
+        { "no": "01", "title": "모듈형 구조", "desc": "현장 조립·해체, 이설 가능" },
+        { "no": "02", "title": "단계적 확장", "desc": "모듈 단위로 규모 조정" },
+        { "no": "03", "title": "통합 제어", "desc": "센서·제어부 내장" },
+        { "no": "04", "title": "반개방형 설계", "desc": "자연광 활용, 밀폐형 대비 에너지 절감" }
+      ],
+      "status": "개발 중 · 시제품 제작 단계",
+      "structure": "광량 센서 · 알루미늄 프로파일 프레임 · LED 조명부 · 폴리카보네이트 패널(반개방형) · 재배 트레이 및 배관 · 제어부(센서·제어 통합)"
+    },
+    "dlight": {
+      "headline": "식물은 빛이 계속 필요한 것이 아니라, 필요한 만큼의 빛이 필요합니다.",
+      "body": "작물마다 하루에 필요한 누적 광량(DLI)이 다릅니다. 고정 타이머 방식은 자연광이 충분한 날에도 같은 시간만큼 LED를 켭니다. DLight는 유입되는 자연광을 실시간으로 측정하고, 목표 광량에서 부족한 만큼만 LED로 보충합니다.",
+      "flow": [
+        "자연광 유입",
+        "광량 센서 측정",
+        "현재 누적 DLI 산출",
+        "목표 DLI와 비교",
+        "부족분만큼 LED 출력 조절"
+      ],
+      "summary": "목표 광량에서 부족한 만큼만 LED로 보충",
+      "graph": {
+        "time": "시간",
+        "light": "광량",
+        "natural": "자연광",
+        "led": "LED 보충",
+        "target": "목표 누적광량"
+      },
+      "status": "개발 중 · 현장 검증 진행 중",
+      "patent": "특허 출원"
+    },
+    "farmOs": {
+      "headline": "하나의 농장을 하나의 시스템에서",
+      "body": "센서가 수집한 환경 데이터와 재배 기록은 AI Farm OS에 모입니다. 환경 모니터링, 광량 관리, 장치 제어, 재배 이력을 한 화면에서 관리하고, 축적된 데이터를 기반으로 재배 리포트를 자동 생성합니다.",
+      "features": [
+        "환경 모니터링 (온습도 · CO₂ · 광량)",
+        "DLI 누적 및 광량 관리",
+        "장치 제어",
+        "재배 이력 및 생육 데이터 관리",
+        "재배 리포트 자동 생성"
+      ],
+      "flow": "농장 → 센서 → 데이터 → 분석 → 제어"
+    },
+    "rnd": {
+      "title": "기술이전과 자체 개발을 병행합니다.",
+      "areas": [
+        { "no": "01", "title": "모듈형 재배 구조 설계" },
+        { "no": "02", "title": "광량 기반 에너지 최적 제어" },
+        { "no": "03", "title": "영상 인식 기반 병해 진단" },
+        { "no": "04", "title": "재배 데이터 분석 및 리포팅" }
+      ]
+    }
+  },
+  "business": {
+    "title": "같은 기술이 다른 현장으로 확장됩니다.",
+    "body": "A-Block · DLight · AI Farm OS는 재배 규모와 목적에 따라 다르게 구성됩니다.",
+    "applications": [
+      {
+        "label": "Production",
+        "name": "생산·재배",
+        "desc": "작물과 현장 환경에 맞춘 모듈 구성. 대규모 시설을 한 번에 짓기 어려울 때 모듈 단위로 시작합니다."
+      },
+      {
+        "label": "Education",
+        "name": "교육",
+        "desc": "소형 모듈과 제어·데이터 화면으로 구성. 작물을 기르는 과정이 곧 기술을 다루는 과정이 됩니다."
+      },
+      {
+        "label": "AgTech Startup",
+        "name": "기술 창업",
+        "desc": "모듈 단위 도입과 데이터 기반 운영. 농업 기반 창업을 준비하는 개인·팀을 위한 장비와 소프트웨어."
+      },
+      {
+        "label": "Public Project",
+        "name": "공공 프로젝트",
+        "desc": "지자체·공공기관과의 스마트농업 사업 공동 기획 및 실증."
+      }
+    ],
+    "brands": {
+      "title": "포그로우스의 브랜드",
+      "body": "포그로우스가 선보이는 제품 브랜드입니다."
+    }
+  },
+  "brands": {
+    "chadam": {
+      "name": "차담 茶談",
+      "slogan": "시간을 마시다",
+      "desc": "하루의 네 시간에 맞춘 한방 블렌딩차 기프트 세트"
+    }
+  },
+  "chadam": {
+    "hero": {
+      "body": "아침, 한낮, 노을, 달밤. 하루의 네 시간에 맞춰 블렌딩한 한방차 네 가지를 한 상자에 담았습니다.",
+      "meaning": "茶談 — 차를 마시며 나누는 이야기",
+      "cta": "구매·수입 문의"
+    },
+    "teas": [
+      {
+        "name": "햇살차",
+        "time": "아침",
+        "line": "하루를 여는 아침에",
+        "ingredients": "홍미삼, 구기자, 오미자, 맥문동, 황기, 시나몬"
+      },
+      {
+        "name": "한낮차",
+        "time": "점심",
+        "line": "한낮의 쉼에",
+        "ingredients": "작약, 당귀, 천궁, 황기, 숙지황, 육계, 감초, 맥문동, 오미자, 구기자, 갈근, 대추"
+      },
+      {
+        "name": "노을차",
+        "time": "오후",
+        "line": "하루가 저무는 오후에",
+        "ingredients": "홍미삼, 백출, 백복령, 감초, 숙지황, 천궁, 당귀, 백작약, 황기, 육계"
+      },
+      {
+        "name": "달밤차",
+        "time": "밤",
+        "line": "하루를 마무리하는 밤에",
+        "ingredients": "홍미삼, 황기, 백출, 복령, 당귀, 용안육, 산조인, 원지, 복신, 연자육, 목향, 감초"
+      }
+    ],
+    "package": {
+      "title": "하루를 담은 상자",
+      "body": "24시간 시계 다이얼에서 가져온 패키지 디자인. 네 가지 색과 아이콘으로 하루의 시간을 나눴습니다."
+    }
+  },
+  "news": {
+    "title": "소식",
+    "body": "박람회, 실증, 설치 소식을 전합니다.",
+    "categories": {
+      "all": "전체",
+      "event": "박람회·행사",
+      "trial": "실증·설치",
+      "award": "선정·수상",
+      "notice": "공지"
+    },
+    "backToList": "목록으로",
+    "koreanOnly": "이 글은 한국어로만 제공됩니다."
+  },
+  "contact": {
+    "title": "어떤 방식으로 함께할 수 있나요?",
+    "ways": [
+      { "title": "스마트팜 도입", "desc": "작물과 현장 환경에 맞춘 모듈 구성 및 구축 상담" },
+      { "title": "기술 실증", "desc": "센서·제어·광량 관리·데이터 기반 재배기술의 현장 실증" },
+      { "title": "교육", "desc": "학교·교육기관 대상 스마트농업 및 AI·데이터 교육 과정 운영" },
+      { "title": "지역 프로젝트", "desc": "지자체·공공기관과의 스마트농업 사업 공동 기획" },
+      { "title": "차담 구매·수입", "desc": "기프트 세트 구매 및 수입·유통 상담" }
+    ],
+    "typeLabel": "문의 유형",
+    "types": {
+      "smartfarm": "스마트팜 도입",
+      "trial": "기술 실증",
+      "education": "교육",
+      "regional": "지역 프로젝트",
+      "chadam": "차담 구매·수입",
+      "other": "기타"
+    },
+    "placeholder": "선택해 주세요",
+    "name": "이름",
+    "organization": "소속/회사",
+    "email": "이메일",
+    "phone": "연락처",
+    "message": "문의 내용",
+    "required": "필수",
+    "privacy": "개인정보 수집·이용 동의",
+    "privacyNote": "문의 응대 목적으로만 이용하며, 응대 완료 후 파기합니다.",
+    "submit": "상담 신청",
+    "sending": "전송 중…",
+    "success": "접수되었습니다. 담당자 확인 후 연락드리겠습니다.",
+    "error": "전송에 실패했습니다. 이메일로 문의해 주세요.",
+    "emailDirect": "이메일로 직접 문의하기"
+  },
+  "footer": {
+    "tagline": "농업의 지속가능성을 기술로 설계합니다.",
+    "company": [
+      { "label": "회사명", "value": "포그로우스(4growth)" },
+      { "label": "대표자", "value": "김에스더" },
+      { "label": "설립", "value": "2024" },
+      { "label": "소재지", "value": "충남 당진시 합덕읍 성동로 121-31" },
+      { "label": "이메일", "value": "4orgrow@gmail.com" },
+      { "label": "팩스", "value": "0504-427-9339" }
+    ],
+    "copyright": "© 2026 4growth. All rights reserved."
+  }
+}

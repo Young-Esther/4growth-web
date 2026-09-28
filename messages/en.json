@@ -1,0 +1,263 @@
+{
+  "common": {
+    "nav": {
+      "technology": "Technology",
+      "business": "Business",
+      "news": "News",
+      "contact": "Contact"
+    },
+    "language": "Language",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "prevPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "learnMore": "Learn more",
+    "viewAll": "View all"
+  },
+  "labels": {
+    "technology": "Technology",
+    "field": "Field",
+    "rnd": "R&D",
+    "business": "Business",
+    "applications": "Applications",
+    "brands": "Brands",
+    "news": "News",
+    "contact": "Contact",
+    "brandChadam": "Brand — Chadam",
+    "companyInfo": "Company Information",
+    "aBlock": "A-Block — Modular Growing Space",
+    "dlight": "DLight — DLI-based Light Control",
+    "farmOs": "AI Farm OS — Data & Control"
+  },
+  "meta": {
+    "title": "4growth — Modular Smart Farm A-Block · DLight · AI Farm OS",
+    "description": "We solve problems found in the field with hardware and software. A-Block modular smart farm, DLight DLI-based LED control, and AI Farm OS cultivation data platform.",
+    "chadamTitle": "Chadam — Drink the Time | 4growth"
+  },
+  "home": {
+    "hero": {
+      "title": "Designing sustainable agriculture through technology",
+      "label": "Technology for Sustainable Agriculture",
+      "body": "We solve problems found in the field with hardware and software.",
+      "ctaTechnology": "Explore our technology",
+      "ctaContact": "Project inquiry"
+    },
+    "field": {
+      "title": "Our technology starts in the field, not at a desk",
+      "body": "4growth has grown and distributed crops directly in the field. More than four years of growing and shipping experience, built through floriculture and distribution partnerships, sets the standard for the technology we make. Which data to measure, and which automation is truly needed, can only be learned by facing the field again and again.",
+      "stats": [
+        { "value": "4+", "caption": "years of growing & shipping" },
+        { "value": "1", "caption": "technology transfer (No. 2264047)" },
+        { "value": "3", "caption": "patent applications filed" },
+        { "value": "MPS-ABC", "caption": "Grade A · Eco-certified floriculture" }
+      ],
+      "altLisianthus": "Lisianthus grown at 4growth",
+      "altGerbera": "Gerberas grown at 4growth"
+    },
+    "preview": {
+      "applications": "Where our technology works",
+      "brands": "Brands"
+    },
+    "latestNews": "Latest news",
+    "cta": {
+      "title": "Let's build a project together",
+      "process": "Inquiry → Review → Meeting → Scope review",
+      "button": "Submit an inquiry"
+    }
+  },
+  "technology": {
+    "stack": {
+      "title": "Three technologies that make one farm",
+      "body": "Growing space, light control, operational data. These are not separate products but one system that makes up a farm.",
+      "space": "Space",
+      "control": "Control",
+      "operations": "Operations · Data"
+    },
+    "aBlock": {
+      "headline": "Build as much as you need. Move it where you need it.",
+      "body": "A-Block is a semi-open modular growing unit built from an aluminum profile frame and polycarbonate panels. It can be assembled and disassembled on site, and expands module by module as scale requires. Sensors and controls are built into each module, so the growing environment can be managed without separate facility construction.",
+      "points": [
+        { "no": "01", "title": "Modular structure", "desc": "On-site assembly, disassembly and relocation" },
+        { "no": "02", "title": "Step-by-step expansion", "desc": "Scale up module by module" },
+        { "no": "03", "title": "Integrated control", "desc": "Built-in sensors and controller" },
+        { "no": "04", "title": "Semi-open design", "desc": "Uses natural light, saving energy compared with closed systems" }
+      ],
+      "status": "In development · Prototype stage",
+      "structure": "Light sensor · Aluminum profile frame · LED lighting · Polycarbonate panels (semi-open) · Growing trays & piping · Control unit (sensors & control)"
+    },
+    "dlight": {
+      "headline": "Plants don't need light all the time. They need just the right amount.",
+      "body": "Every crop needs a different Daily Light Integral (DLI). Fixed timers run LEDs for the same hours even on sunny days. DLight measures incoming natural light in real time and uses LEDs to supply only what is missing from the target.",
+      "flow": [
+        "Natural light enters",
+        "Light sensor measures",
+        "Current DLI is calculated",
+        "Compared with target DLI",
+        "LED output fills the gap"
+      ],
+      "summary": "LEDs supply only what's missing from the target",
+      "graph": {
+        "time": "Time",
+        "light": "Light",
+        "natural": "Natural light",
+        "led": "LED supplement",
+        "target": "Target DLI"
+      },
+      "status": "In development · Field validation in progress",
+      "patent": "Patent pending"
+    },
+    "farmOs": {
+      "headline": "One farm, one system",
+      "body": "Environmental data from sensors and cultivation records come together in AI Farm OS. Monitor the environment, manage light, control devices and review cultivation history on one screen, and generate cultivation reports automatically from accumulated data.",
+      "features": [
+        "Environmental monitoring (temperature & humidity · CO₂ · light)",
+        "DLI tracking & light management",
+        "Device control",
+        "Cultivation history & growth data",
+        "Automatic cultivation reports"
+      ],
+      "flow": ""
+    },
+    "rnd": {
+      "title": "We combine technology transfer with in-house development.",
+      "areas": [
+        { "no": "01", "title": "Modular growing structure design" },
+        { "no": "02", "title": "Light-based energy-optimal control" },
+        { "no": "03", "title": "Image-based plant disease diagnosis" },
+        { "no": "04", "title": "Cultivation data analysis & reporting" }
+      ]
+    }
+  },
+  "business": {
+    "title": "The same technology extends to different fields.",
+    "body": "A-Block · DLight · AI Farm OS are configured differently by scale and purpose.",
+    "applications": [
+      {
+        "label": "Production",
+        "name": "",
+        "desc": "Module setups matched to crops and site conditions. When a large facility is hard to build at once, start module by module."
+      },
+      {
+        "label": "Education",
+        "name": "",
+        "desc": "Small modules with control and data screens. Growing crops becomes learning technology."
+      },
+      {
+        "label": "AgTech Startup",
+        "name": "",
+        "desc": "Module-based adoption and data-driven operation. Equipment and software for individuals and teams starting agricultural ventures."
+      },
+      {
+        "label": "Public Project",
+        "name": "",
+        "desc": "Co-planning and field validation of smart agriculture projects with local governments and public institutions."
+      }
+    ],
+    "brands": {
+      "title": "Our brands",
+      "body": "Product brands presented by 4growth."
+    }
+  },
+  "brands": {
+    "chadam": {
+      "name": "Chadam 茶談",
+      "slogan": "Drink the Time",
+      "desc": "A gift set of four Korean herbal blends for four times of day"
+    }
+  },
+  "chadam": {
+    "hero": {
+      "body": "Morning, midday, sunset, moonlit night. Four Korean herbal blends, each made for a time of day, in one box.",
+      "meaning": "茶談 — tea and conversation",
+      "cta": "Purchase & import inquiry"
+    },
+    "teas": [
+      {
+        "name": "Haetsal",
+        "time": "Morning",
+        "line": "To open the day",
+        "ingredients": "Red ginseng rootlets, goji berry, schisandra, liriope root, astragalus, cinnamon"
+      },
+      {
+        "name": "Hannat",
+        "time": "Midday",
+        "line": "For a midday pause",
+        "ingredients": "Peony root, angelica root, cnidium, astragalus, prepared rehmannia, cinnamon bark, licorice, liriope root, schisandra, goji berry, kudzu root, jujube"
+      },
+      {
+        "name": "Noeul",
+        "time": "Afternoon",
+        "line": "As the day winds down",
+        "ingredients": "Red ginseng rootlets, atractylodes, poria, licorice, prepared rehmannia, cnidium, angelica root, white peony root, astragalus, cinnamon bark"
+      },
+      {
+        "name": "Dalbam",
+        "time": "Night",
+        "line": "To close the day",
+        "ingredients": "Red ginseng rootlets, astragalus, atractylodes, poria, angelica root, longan, jujube seed, polygala root, fushen poria, lotus seed, costus root, licorice"
+      }
+    ],
+    "package": {
+      "title": "A box that holds a day",
+      "body": "Packaging inspired by a 24-hour clock dial. Four colors and icons divide the hours of the day."
+    }
+  },
+  "news": {
+    "title": "News",
+    "body": "Exhibitions, field trials and installations.",
+    "categories": {
+      "all": "All",
+      "event": "Exhibitions & Events",
+      "trial": "Trials & Installations",
+      "award": "Selections & Awards",
+      "notice": "Notices"
+    },
+    "backToList": "Back to list",
+    "koreanOnly": "This article is available in Korean only."
+  },
+  "contact": {
+    "title": "How can we work together?",
+    "ways": [
+      { "title": "Smart farm adoption", "desc": "Module configuration and installation consulting for your crops and site" },
+      { "title": "Technology validation", "desc": "Field validation of sensor, control, light management and data-driven growing technology" },
+      { "title": "Education", "desc": "Smart agriculture, AI and data programs for schools and educational institutions" },
+      { "title": "Regional projects", "desc": "Co-planning smart agriculture projects with local governments and public institutions" },
+      { "title": "Chadam purchase & import", "desc": "Gift set purchases and import/distribution inquiries" }
+    ],
+    "typeLabel": "Inquiry type",
+    "types": {
+      "smartfarm": "Smart farm adoption",
+      "trial": "Technology validation",
+      "education": "Education",
+      "regional": "Regional project",
+      "chadam": "Chadam purchase & import",
+      "other": "Other"
+    },
+    "placeholder": "Please select",
+    "name": "Name",
+    "organization": "Organization",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "required": "Required",
+    "privacy": "I agree to the collection and use of my personal information",
+    "privacyNote": "Used only to respond to your inquiry and deleted afterward.",
+    "submit": "Submit inquiry",
+    "sending": "Sending…",
+    "success": "Received. We will get back to you after review.",
+    "error": "Sending failed. Please email us instead.",
+    "emailDirect": "Or email us directly"
+  },
+  "footer": {
+    "tagline": "Designing sustainable agriculture through technology.",
+    "company": [
+      { "label": "Company", "value": "4growth" },
+      { "label": "CEO", "value": "Esther Kim" },
+      { "label": "Founded", "value": "2024" },
+      { "label": "Address", "value": "121-31 Seongdong-ro, Hapdeok-eup, Dangjin-si, Chungcheongnam-do, Republic of Korea" },
+      { "label": "Email", "value": "4orgrow@gmail.com" },
+      { "label": "Fax", "value": "+82-504-427-9339" }
+    ],
+    "copyright": "© 2026 4growth. All rights reserved."
+  }
+}

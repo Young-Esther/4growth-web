@@ -9,10 +9,10 @@ type Props = {
 
 /** SPEC §0 — 로고 표기는 `4GROWTH`. (SPEC §10, LOGO) */
 export default function Logo({ className = "", variant = "color" }: Props) {
-  const asset = firstImage(ASSETS.LOGO);
-  const src = variant === "white" ? asset.srcWhite : asset.src;
+  const asset = ASSETS.LOGO ? firstImage(ASSETS.LOGO) : null;
+  const src = variant === "white" ? asset?.srcWhite : asset?.src;
 
-  if (src) {
+  if (asset && src) {
     return (
       <Image
         src={src}

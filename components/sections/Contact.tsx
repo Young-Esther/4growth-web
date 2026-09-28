@@ -1,40 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionLabel from "@/components/ui/SectionLabel";
+import ko from "@/messages/ko.json";
 
-/** SPEC §8 — SECTION 07 CONTACT */
+/**
+ * SPEC §8 (v0.1) — CONTACT. v0.2 §3-6:
+ * - 협업 방식 5번째로 `차담 구매·수입` 추가
+ * - 문의 유형 option value 는 로케일과 무관하게 고정
+ * - `?type=chadam` 처럼 쿼리가 있으면 해당 유형을 미리 선택
+ * - Formspree hidden 필드 `locale`, `_subject` = `[4growth][KO|EN|VI] {유형 한국어명}`
+ */
 
-const WAYS = [
-  {
-    title: "스마트팜 도입",
-    desc: "작물과 현장 환경에 맞춘 모듈 구성 및 구축 상담",
-  },
-  {
-    title: "기술 실증",
-    desc: "센서·제어·광량 관리·데이터 기반 재배기술의 현장 실증",
-  },
-  {
-    title: "교육",
-    desc: "학교·교육기관 대상 스마트농업 및 AI·데이터 교육 과정 운영",
-  },
-  {
-    title: "지역 프로젝트",
-    desc: "지자체·공공기관과의 스마트농업 사업 공동 기획",
-  },
-];
+/** 고정 option value (SPEC §3-6) — 순서가 곧 select 표시 순서 */
+export const INQUIRY_TYPES = [
+  "smartfarm",
+  "trial",
+  "education",
+  "regional",
+  "chadam",
+  "other",
+] as const;
+type InquiryType = (typeof INQUIRY_TYPES)[number];
 
-const INQUIRY_TYPES = [
-  "스마트팜 도입",
-  "기술 실증",
-  "교육",
-  "지역 프로젝트",
-  "기타",
-];
-
-/** 성공 시 함께 노출하는 절차 표시 (SPEC §8) */
-const PROCESS = ["상담 신청", "담당자 확인", "미팅", "범위 검토"];
+const isInquiryType = (v: string | null): v is InquiryType =>
+  v !== null && (INQUIRY_TYPES as readonly string[]).includes(v);
 
 const EMAIL = "4orgrow@gmail.com";
 
@@ -42,9 +34,26 @@ const FIELD_CLASS =
   "w-full rounded-lg border border-line bg-white px-4 py-3 text-[15px] text-ink outline-none transition-colors placeholder:text-caption focus:border-blue";
 
 type Status = "idle" | "submitting" | "success" | "error";
+type Way = { title: string; desc: string };
 
-export default function Contact() {
+export default function Contact({ no = "01" }: { no?: string }) {
+  const t = useTranslations("contact");
+  const home = useTranslations("home.cta");
+  const label = useTranslations("labels");
+  const locale = useLocale();
   const [status, setStatus] = useState<Status>("idle");
+  const [type, setType] = useState<InquiryType | "">("");
+
+  const ways = t.raw("ways") as Way[];
+
+  // ?type= 프리셀렉트. 정적 페이지라 서버에서는 쿼리를 모르므로 마운트 후에 읽는다.
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("type");
+    if (isInquiryType(requested)) setType(requested);
+  }, []);
+
+  // 수신자가 한국어 메일함에서 언어·유형을 바로 알 수 있게 제목은 항상 한국어 유형명.
+  const subject = `[4growth][${locale.toUpperCase()}] ${type ? ko.contact.types[type] : ""}`.trim();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -65,6 +74,7 @@ export default function Contact() {
       });
       if (!response.ok) throw new Error(String(response.status));
       form.reset();
+      setType("");
       setStatus("success");
     } catch {
       setStatus("error");
@@ -72,22 +82,27 @@ export default function Contact() {
   }
 
   const submitting = status === "submitting";
+  const requiredMark = (
+    <abbr title={t("required")} className="text-blue no-underline">
+      *
+    </abbr>
+  );
 
   return (
     <section id="contact" className="section-4g scroll-mt-[72px]">
       <div className="container-4g">
         <FadeIn>
-          <SectionLabel>05 — Contact</SectionLabel>
+          <SectionLabel>{`${no} — ${label("contact")}`}</SectionLabel>
           <h2 className="max-w-3xl text-[26px] font-bold leading-snug md:text-[40px]">
-            어떤 방식으로 함께할 수 있나요?
+            {t("title")}
           </h2>
         </FadeIn>
 
         <div className="mt-10 grid gap-12 md:mt-16 md:grid-cols-2 md:gap-16">
-          {/* 좌: 협업 방식 4개 */}
+          {/* 좌: 협업 방식 */}
           <FadeIn>
             <ul className="space-y-7">
-              {WAYS.map((w) => (
+              {ways.map((w) => (
                 <li key={w.title} className="border-t border-line pt-5">
                   <p className="text-[17px] font-bold md:text-lg">{w.title}</p>
                   <p className="mt-2 text-sm leading-relaxed text-ink/70">{w.desc}</p>
@@ -99,33 +114,37 @@ export default function Contact() {
           {/* 우: 문의폼 */}
           <FadeIn delay={120}>
             <form onSubmit={handleSubmit} className="relative rounded-2xl bg-surface p-6 md:p-8">
-              {/* 스팸 방지 honeypot — Formspree 규약상 필드명은 _gotcha */}
+              {/* 스팸 방지 honeypot — Formspree 규약상 필드명은 _gotcha. 화면·보조기기 모두 숨김. */}
               <div
                 className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden"
                 aria-hidden
               >
-                <label htmlFor="_gotcha">이 항목은 비워 두세요</label>
                 <input id="_gotcha" type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
               </div>
+
+              {/* SPEC §3-6 — 수신 메일 제목·언어 표시 */}
+              <input type="hidden" name="_subject" value={subject} />
+              <input type="hidden" name="locale" value={locale} />
 
               <div className="space-y-5">
                 <div>
                   <label htmlFor="inquiry-type" className="mb-2 block text-sm font-bold">
-                    문의 유형 <span className="text-blue">*</span>
+                    {t("typeLabel")} {requiredMark}
                   </label>
                   <select
                     id="inquiry-type"
                     name="문의 유형"
                     required
-                    defaultValue=""
+                    value={type}
+                    onChange={(e) => setType(e.target.value as InquiryType)}
                     className={FIELD_CLASS}
                   >
                     <option value="" disabled>
-                      선택해 주세요
+                      {t("placeholder")}
                     </option>
-                    {INQUIRY_TYPES.map((t) => (
-                      <option key={t} value={t}>
-                        {t}
+                    {INQUIRY_TYPES.map((value) => (
+                      <option key={value} value={value}>
+                        {t(`types.${value}`)}
                       </option>
                     ))}
                   </select>
@@ -134,7 +153,7 @@ export default function Contact() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="mb-2 block text-sm font-bold">
-                      이름 <span className="text-blue">*</span>
+                      {t("name")} {requiredMark}
                     </label>
                     <input
                       id="name"
@@ -147,7 +166,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label htmlFor="company" className="mb-2 block text-sm font-bold">
-                      소속/회사
+                      {t("organization")}
                     </label>
                     <input
                       id="company"
@@ -162,7 +181,7 @@ export default function Contact() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
                     <label htmlFor="email" className="mb-2 block text-sm font-bold">
-                      이메일 <span className="text-blue">*</span>
+                      {t("email")} {requiredMark}
                     </label>
                     <input
                       id="email"
@@ -175,7 +194,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <label htmlFor="phone" className="mb-2 block text-sm font-bold">
-                      연락처
+                      {t("phone")}
                     </label>
                     <input
                       id="phone"
@@ -189,7 +208,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="message" className="mb-2 block text-sm font-bold">
-                    문의 내용 <span className="text-blue">*</span>
+                    {t("message")} {requiredMark}
                   </label>
                   <textarea
                     id="message"
@@ -210,10 +229,8 @@ export default function Contact() {
                     className="mt-1 h-4 w-4 shrink-0 accent-blue"
                   />
                   <label htmlFor="privacy" className="text-sm leading-relaxed text-ink/80">
-                    개인정보 수집·이용 동의 <span className="text-blue">*</span>
-                    <span className="mt-1 block text-caption">
-                      문의 응대 목적으로만 이용하며, 응대 완료 후 파기합니다.
-                    </span>
+                    {t("privacy")} {requiredMark}
+                    <span className="mt-1 block text-caption">{t("privacyNote")}</span>
                   </label>
                 </div>
               </div>
@@ -223,40 +240,27 @@ export default function Contact() {
                 disabled={submitting}
                 className="mt-7 inline-flex h-12 w-full items-center justify-center rounded-full bg-blue px-7 text-sm font-bold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {submitting ? "전송 중…" : "상담 신청"}
+                {submitting ? t("sending") : t("submit")}
               </button>
 
               <div aria-live="polite" className="mt-4 empty:mt-0">
                 {status === "success" && (
                   <div className="rounded-lg border border-blue/30 bg-blue/[0.06] p-4">
-                    <p className="text-sm font-bold text-blue">
-                      접수되었습니다. 담당자 확인 후 연락드리겠습니다.
-                    </p>
-                    <ol className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
-                      {PROCESS.map((step, i) => (
-                        <li key={step} className="flex items-center gap-2 text-xs text-ink/70">
-                          {step}
-                          {i < PROCESS.length - 1 && (
-                            <span aria-hidden className="text-caption">
-                              →
-                            </span>
-                          )}
-                        </li>
-                      ))}
-                    </ol>
+                    <p className="text-sm font-bold text-blue">{t("success")}</p>
+                    {/* 성공 시 함께 노출하는 절차 표시 (SPEC §8) */}
+                    <p className="mt-3 text-xs text-ink/70">{home("process")}</p>
                   </div>
                 )}
                 {status === "error" && (
-                  // SPEC에 실패 문구 규정이 없어 대안 연락 경로를 안내한다.
                   <p className="rounded-lg border border-line bg-white p-4 text-sm text-ink/80">
-                    전송에 실패했습니다. 잠시 후 다시 시도하시거나 {EMAIL} 으로 직접 보내 주세요.
+                    {t("error")}
                   </p>
                 )}
               </div>
 
               {/* 폼이 안 될 때의 대안 (SPEC §8) */}
               <p className="mt-5 text-sm text-caption">
-                이메일로 문의:{" "}
+                {t("emailDirect")}:{" "}
                 <a
                   href={"mailto:" + EMAIL}
                   className="font-bold text-blue underline underline-offset-4"

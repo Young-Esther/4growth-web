@@ -1,43 +1,61 @@
+import { useTranslations } from "next-intl";
 import Logo from "@/components/ui/Logo";
+import { Link } from "@/i18n/navigation";
 
-/** SPEC §9 — FOOTER */
+/** SPEC §9 (v0.1) — FOOTER. v0.2 §3-7: 라벨 번역 + 메뉴 링크 4개 한 줄. */
 
-/** COMPANY INFORMATION (카탈로그 11p 항목 순서 그대로). */
-const COMPANY: { label: string; value: string; href?: string }[] = [
-  { label: "회사명", value: "포그로우스(4growth)" },
-  { label: "대표자", value: "김에스더" },
-  { label: "설립", value: "2024" },
-  { label: "소재지", value: "충남 당진시 합덕읍 성동로 121-31" },
-  {
-    label: "이메일",
-    value: "4orgrow@gmail.com",
-    href: "mailto:4orgrow@gmail.com",
-  },
-  { label: "팩스", value: "0504-427-9339" },
-];
+const NAV = [
+  { key: "technology", href: "/technology" },
+  { key: "business", href: "/business" },
+  { key: "news", href: "/news" },
+  { key: "contact", href: "/contact" },
+] as const;
+
+const EMAIL = "4orgrow@gmail.com";
+
+type CompanyItem = { label: string; value: string };
 
 export default function Footer() {
+  const t = useTranslations("footer");
+  const common = useTranslations("common");
+  const label = useTranslations("labels");
+  /** COMPANY INFORMATION (카탈로그 11p 항목 순서 그대로). */
+  const company = t.raw("company") as CompanyItem[];
+
   return (
     <footer className="bg-ink text-white">
       <div className="container-4g py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-2 md:gap-16">
           <div>
             <Logo className="h-6" variant="white" />
-            <p className="mt-5 text-[15px] text-white/75">
-              농업의 지속가능성을 기술로 설계합니다.
-            </p>
+            <p className="mt-5 text-[15px] text-white/75">{t("tagline")}</p>
+            <nav className="mt-8">
+              <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                {NAV.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-white/75 transition-colors hover:text-white"
+                    >
+                      {common(`nav.${item.key}`)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
           <div>
-            <p className="label-en mb-5 text-white/50">Company Information</p>
+            <p className="label-en mb-5 text-white/50">{label("companyInfo")}</p>
             <dl className="space-y-2.5 text-sm">
-              {COMPANY.map((item) => (
+              {company.map((item) => (
                 <div key={item.label} className="flex gap-4">
-                  <dt className="w-16 shrink-0 text-white/50">{item.label}</dt>
+                  {/* en/vi 라벨(Founded, Thành lập 등)이 길어 폭을 조금 넓힌다 */}
+                  <dt className="w-20 shrink-0 text-white/50">{item.label}</dt>
                   <dd className="text-white/85">
-                    {item.href ? (
+                    {item.value === EMAIL ? (
                       <a
-                        href={item.href}
+                        href={`mailto:${EMAIL}`}
                         className="underline underline-offset-4 transition-colors hover:text-white"
                       >
                         {item.value}
@@ -53,7 +71,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-12 border-t border-white/15 pt-6 text-xs text-white/50">
-          © 2026 4growth. All rights reserved.
+          {t("copyright")}
         </p>
       </div>
     </footer>

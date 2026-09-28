@@ -1,0 +1,263 @@
+{
+  "common": {
+    "nav": {
+      "technology": "Công nghệ",
+      "business": "Lĩnh vực kinh doanh",
+      "news": "Tin tức",
+      "contact": "Liên hệ"
+    },
+    "language": "Ngôn ngữ",
+    "menuOpen": "Mở menu",
+    "menuClose": "Đóng menu",
+    "prevPhoto": "Ảnh trước",
+    "nextPhoto": "Ảnh sau",
+    "learnMore": "Xem chi tiết",
+    "viewAll": "Xem tất cả"
+  },
+  "labels": {
+    "technology": "Technology",
+    "field": "Field",
+    "rnd": "R&D",
+    "business": "Business",
+    "applications": "Applications",
+    "brands": "Brands",
+    "news": "News",
+    "contact": "Contact",
+    "brandChadam": "Brand — Chadam",
+    "companyInfo": "Company Information",
+    "aBlock": "A-Block — Modular Growing Space",
+    "dlight": "DLight — DLI-based Light Control",
+    "farmOs": "AI Farm OS — Data & Control"
+  },
+  "meta": {
+    "title": "4growth — Trang trại thông minh dạng mô-đun A-Block · DLight · AI Farm OS",
+    "description": "Chúng tôi giải quyết những vấn đề từ thực địa nông nghiệp bằng phần cứng và phần mềm. Trang trại thông minh mô-đun A-Block, điều khiển LED theo DLI DLight và nền tảng dữ liệu canh tác AI Farm OS.",
+    "chadamTitle": "Chadam — Nhâm nhi thời gian | 4growth"
+  },
+  "home": {
+    "hero": {
+      "title": "Kiến tạo nền nông nghiệp bền vững bằng công nghệ",
+      "label": "Technology for Sustainable Agriculture",
+      "body": "Chúng tôi giải quyết những vấn đề phát hiện tại thực địa nông nghiệp bằng phần cứng và phần mềm.",
+      "ctaTechnology": "Tìm hiểu công nghệ",
+      "ctaContact": "Liên hệ dự án"
+    },
+    "field": {
+      "title": "Công nghệ của chúng tôi bắt đầu từ thực địa, không phải từ bàn giấy",
+      "body": "4growth trực tiếp sản xuất và phân phối nông sản tại thực địa. Hơn 4 năm kinh nghiệm trồng trọt và xuất hàng, tích lũy qua hoạt động trồng hoa và hợp tác phân phối, là tiêu chuẩn cho những công nghệ chúng tôi tạo ra. Cần đo dữ liệu nào, tự động hóa nào thực sự cần thiết — chỉ có thể biết được sau nhiều lần trực tiếp đối mặt với thực tế sản xuất.",
+      "stats": [
+        { "value": "4+", "caption": "năm kinh nghiệm trồng trọt & xuất hàng" },
+        { "value": "1", "caption": "chuyển giao công nghệ (số 2264047)" },
+        { "value": "3", "caption": "đơn đăng ký sáng chế đã nộp" },
+        { "value": "MPS-ABC", "caption": "Hạng A · Chứng nhận hoa thân thiện môi trường" }
+      ],
+      "altLisianthus": "Hoa cát tường tại vườn 4growth",
+      "altGerbera": "Hoa đồng tiền tại vườn 4growth"
+    },
+    "preview": {
+      "applications": "Ứng dụng công nghệ",
+      "brands": "Thương hiệu"
+    },
+    "latestNews": "Tin mới nhất",
+    "cta": {
+      "title": "Cùng nhau xây dựng dự án",
+      "process": "Gửi yêu cầu → Xem xét → Gặp mặt → Xác định phạm vi",
+      "button": "Gửi yêu cầu"
+    }
+  },
+  "technology": {
+    "stack": {
+      "title": "Ba công nghệ tạo nên một trang trại",
+      "body": "Không gian canh tác, điều khiển ánh sáng, dữ liệu vận hành. Ba công nghệ này không phải là sản phẩm bán riêng lẻ, mà là một hệ thống thống nhất tạo nên một trang trại.",
+      "space": "Không gian",
+      "control": "Điều khiển",
+      "operations": "Vận hành · Dữ liệu"
+    },
+    "aBlock": {
+      "headline": "Xây vừa đủ nhu cầu, di chuyển đến nơi cần thiết.",
+      "body": "A-Block là đơn vị canh tác dạng mô-đun bán mở, cấu tạo từ khung nhôm định hình và tấm polycarbonate. Có thể lắp ráp, tháo dỡ ngay tại chỗ và mở rộng theo từng mô-đun tùy quy mô. Cảm biến và bộ điều khiển được tích hợp sẵn trong mô-đun, giúp quản lý môi trường canh tác mà không cần thi công hạ tầng riêng.",
+      "points": [
+        { "no": "01", "title": "Cấu trúc mô-đun", "desc": "Lắp ráp, tháo dỡ tại chỗ, có thể di dời" },
+        { "no": "02", "title": "Mở rộng theo giai đoạn", "desc": "Điều chỉnh quy mô theo từng mô-đun" },
+        { "no": "03", "title": "Điều khiển tích hợp", "desc": "Cảm biến và bộ điều khiển tích hợp sẵn" },
+        { "no": "04", "title": "Thiết kế bán mở", "desc": "Tận dụng ánh sáng tự nhiên, tiết kiệm năng lượng so với hệ thống kín" }
+      ],
+      "status": "Đang phát triển · Giai đoạn chế tạo mẫu thử",
+      "structure": "Cảm biến ánh sáng · Khung nhôm định hình · Hệ thống đèn LED · Tấm polycarbonate (bán mở) · Khay trồng & đường ống · Bộ điều khiển (cảm biến & điều khiển)"
+    },
+    "dlight": {
+      "headline": "Cây trồng không cần ánh sáng liên tục, mà cần đúng lượng ánh sáng cần thiết.",
+      "body": "Mỗi loại cây trồng cần lượng ánh sáng tích lũy trong ngày (DLI) khác nhau. Phương thức hẹn giờ cố định vẫn bật đèn LED với cùng thời lượng ngay cả vào những ngày đủ nắng. DLight đo ánh sáng tự nhiên theo thời gian thực và chỉ dùng đèn LED bù phần còn thiếu so với mục tiêu.",
+      "flow": [
+        "Ánh sáng tự nhiên chiếu vào",
+        "Cảm biến đo ánh sáng",
+        "Tính DLI tích lũy hiện tại",
+        "So sánh với DLI mục tiêu",
+        "Điều chỉnh đèn LED bù phần thiếu"
+      ],
+      "summary": "Đèn LED chỉ bổ sung phần thiếu so với mục tiêu",
+      "graph": {
+        "time": "Thời gian",
+        "light": "Ánh sáng",
+        "natural": "Ánh sáng tự nhiên",
+        "led": "Bổ sung LED",
+        "target": "DLI mục tiêu"
+      },
+      "status": "Đang phát triển · Đang thử nghiệm thực địa",
+      "patent": "Đã nộp đơn sáng chế"
+    },
+    "farmOs": {
+      "headline": "Một trang trại, một hệ thống",
+      "body": "Dữ liệu môi trường từ cảm biến và nhật ký canh tác được tập trung về AI Farm OS. Giám sát môi trường, quản lý ánh sáng, điều khiển thiết bị và theo dõi lịch sử canh tác trên cùng một màn hình, đồng thời tự động tạo báo cáo canh tác từ dữ liệu tích lũy.",
+      "features": [
+        "Giám sát môi trường (nhiệt độ, độ ẩm · CO₂ · ánh sáng)",
+        "Theo dõi DLI & quản lý ánh sáng",
+        "Điều khiển thiết bị",
+        "Quản lý lịch sử canh tác & dữ liệu sinh trưởng",
+        "Tự động tạo báo cáo canh tác"
+      ],
+      "flow": "Trang trại → Cảm biến → Dữ liệu → Phân tích → Điều khiển"
+    },
+    "rnd": {
+      "title": "Chúng tôi kết hợp chuyển giao công nghệ với tự nghiên cứu phát triển.",
+      "areas": [
+        { "no": "01", "title": "Thiết kế cấu trúc canh tác mô-đun" },
+        { "no": "02", "title": "Điều khiển tối ưu năng lượng dựa trên ánh sáng" },
+        { "no": "03", "title": "Chẩn đoán bệnh cây bằng nhận dạng hình ảnh" },
+        { "no": "04", "title": "Phân tích dữ liệu canh tác & báo cáo" }
+      ]
+    }
+  },
+  "business": {
+    "title": "Cùng một công nghệ, mở rộng đến nhiều lĩnh vực.",
+    "body": "A-Block · DLight · AI Farm OS được cấu hình khác nhau tùy theo quy mô và mục đích canh tác.",
+    "applications": [
+      {
+        "label": "Production",
+        "name": "Sản xuất · Canh tác",
+        "desc": "Cấu hình mô-đun phù hợp với cây trồng và điều kiện thực địa. Khi khó xây cơ sở quy mô lớn ngay một lần, hãy bắt đầu từng mô-đun."
+      },
+      {
+        "label": "Education",
+        "name": "Giáo dục",
+        "desc": "Gồm mô-đun cỡ nhỏ cùng màn hình điều khiển và dữ liệu. Quá trình trồng cây cũng là quá trình làm chủ công nghệ."
+      },
+      {
+        "label": "AgTech Startup",
+        "name": "Khởi nghiệp công nghệ nông nghiệp",
+        "desc": "Triển khai theo mô-đun và vận hành dựa trên dữ liệu. Thiết bị và phần mềm cho cá nhân, nhóm chuẩn bị khởi nghiệp nông nghiệp."
+      },
+      {
+        "label": "Public Project",
+        "name": "Dự án công",
+        "desc": "Đồng hoạch định và thử nghiệm thực tế các dự án nông nghiệp thông minh cùng chính quyền địa phương và cơ quan công."
+      }
+    ],
+    "brands": {
+      "title": "Thương hiệu của chúng tôi",
+      "body": "Các thương hiệu sản phẩm do 4growth giới thiệu."
+    }
+  },
+  "brands": {
+    "chadam": {
+      "name": "Chadam 茶談",
+      "slogan": "Nhâm nhi thời gian",
+      "desc": "Bộ quà tặng bốn loại trà thảo mộc Hàn Quốc cho bốn thời điểm trong ngày"
+    }
+  },
+  "chadam": {
+    "hero": {
+      "body": "Buổi sáng, ban trưa, hoàng hôn, đêm trăng. Bốn loại trà thảo mộc Hàn Quốc, mỗi loại dành cho một thời điểm trong ngày, trong cùng một hộp quà.",
+      "meaning": "茶談 — trà và câu chuyện",
+      "cta": "Liên hệ mua hàng & nhập khẩu"
+    },
+    "teas": [
+      {
+        "name": "Trà Nắng Mai",
+        "time": "Buổi sáng",
+        "line": "Để khởi đầu ngày mới",
+        "ingredients": "Rễ con hồng sâm, câu kỷ tử, ngũ vị tử, mạch môn, hoàng kỳ, quế"
+      },
+      {
+        "name": "Trà Ban Trưa",
+        "time": "Buổi trưa",
+        "line": "Cho phút nghỉ giữa ngày",
+        "ingredients": "Thược dược, đương quy, xuyên khung, hoàng kỳ, thục địa, nhục quế, cam thảo, mạch môn, ngũ vị tử, câu kỷ tử, cát căn, táo tàu"
+      },
+      {
+        "name": "Trà Hoàng Hôn",
+        "time": "Buổi chiều",
+        "line": "Khi chiều buông",
+        "ingredients": "Rễ con hồng sâm, bạch truật, bạch phục linh, cam thảo, thục địa, xuyên khung, đương quy, bạch thược, hoàng kỳ, nhục quế"
+      },
+      {
+        "name": "Trà Đêm Trăng",
+        "time": "Buổi tối",
+        "line": "Để khép lại một ngày",
+        "ingredients": "Rễ con hồng sâm, hoàng kỳ, bạch truật, phục linh, đương quy, long nhãn, toan táo nhân, viễn chí, phục thần, liên nhục, mộc hương, cam thảo"
+      }
+    ],
+    "package": {
+      "title": "Chiếc hộp chứa trọn một ngày",
+      "body": "Thiết kế bao bì lấy cảm hứng từ mặt đồng hồ 24 giờ. Bốn màu sắc và biểu tượng chia các khoảng thời gian trong ngày."
+    }
+  },
+  "news": {
+    "title": "Tin tức",
+    "body": "Tin tức về triển lãm, thử nghiệm thực địa và lắp đặt.",
+    "categories": {
+      "all": "Tất cả",
+      "event": "Triển lãm & Sự kiện",
+      "trial": "Thử nghiệm & Lắp đặt",
+      "award": "Tuyển chọn & Giải thưởng",
+      "notice": "Thông báo"
+    },
+    "backToList": "Quay lại danh sách",
+    "koreanOnly": "Bài viết này chỉ có bằng tiếng Hàn."
+  },
+  "contact": {
+    "title": "Chúng ta có thể hợp tác như thế nào?",
+    "ways": [
+      { "title": "Triển khai trang trại thông minh", "desc": "Tư vấn cấu hình và lắp đặt mô-đun phù hợp với cây trồng và điều kiện thực địa" },
+      { "title": "Thử nghiệm công nghệ", "desc": "Thử nghiệm thực địa công nghệ canh tác dựa trên cảm biến, điều khiển, quản lý ánh sáng và dữ liệu" },
+      { "title": "Giáo dục", "desc": "Chương trình giáo dục nông nghiệp thông minh, AI và dữ liệu cho trường học và cơ sở giáo dục" },
+      { "title": "Dự án địa phương", "desc": "Đồng hoạch định dự án nông nghiệp thông minh cùng chính quyền địa phương và cơ quan công" },
+      { "title": "Mua & nhập khẩu Chadam", "desc": "Tư vấn mua bộ quà tặng và nhập khẩu, phân phối" }
+    ],
+    "typeLabel": "Loại yêu cầu",
+    "types": {
+      "smartfarm": "Triển khai trang trại thông minh",
+      "trial": "Thử nghiệm công nghệ",
+      "education": "Giáo dục",
+      "regional": "Dự án địa phương",
+      "chadam": "Mua & nhập khẩu Chadam",
+      "other": "Khác"
+    },
+    "placeholder": "Vui lòng chọn",
+    "name": "Họ tên",
+    "organization": "Công ty / Tổ chức",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "message": "Nội dung",
+    "required": "Bắt buộc",
+    "privacy": "Tôi đồng ý cho phép thu thập và sử dụng thông tin cá nhân",
+    "privacyNote": "Chỉ sử dụng để phản hồi yêu cầu và sẽ được xóa sau khi hoàn tất.",
+    "submit": "Gửi yêu cầu",
+    "sending": "Đang gửi…",
+    "success": "Đã nhận yêu cầu. Chúng tôi sẽ liên hệ lại sau khi xem xét.",
+    "error": "Gửi không thành công. Vui lòng liên hệ qua email.",
+    "emailDirect": "Hoặc gửi email trực tiếp"
+  },
+  "footer": {
+    "tagline": "Kiến tạo nền nông nghiệp bền vững bằng công nghệ.",
+    "company": [
+      { "label": "Công ty", "value": "4growth" },
+      { "label": "Giám đốc", "value": "Esther Kim" },
+      { "label": "Thành lập", "value": "2024" },
+      { "label": "Địa chỉ", "value": "121-31 Seongdong-ro, Hapdeok-eup, Dangjin-si, Chungcheongnam-do, Hàn Quốc" },
+      { "label": "Email", "value": "4orgrow@gmail.com" },
+      { "label": "Fax", "value": "+82-504-427-9339" }
+    ],
+    "copyright": "© 2026 4growth. All rights reserved."
+  }
+}

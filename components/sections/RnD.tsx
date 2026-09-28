@@ -1,33 +1,33 @@
+import { useTranslations } from "next-intl";
 import AssetSlot from "@/components/ui/AssetSlot";
 import FadeIn from "@/components/ui/FadeIn";
 import SectionLabel from "@/components/ui/SectionLabel";
 
 /**
- * SPEC §6 — SECTION 05 R&D (짧은 스트립).
- * 특허번호·출원일 표는 v0.1에 넣지 않는다 (건수만 §5 숫자 스트립에 반영).
+ * SPEC §6 (v0.1) — R&D (짧은 스트립). v0.2: 기술 페이지로 이동, 앵커 id `rnd`.
+ * 특허번호·출원일 표는 넣지 않는다 (건수만 Field 숫자 스트립에 반영).
  */
 
-const AREAS = [
-  { no: "01", title: "모듈형 재배 구조 설계" },
-  { no: "02", title: "광량 기반 에너지 최적 제어" },
-  { no: "03", title: "영상 인식 기반 병해 진단" },
-  { no: "04", title: "재배 데이터 분석 및 리포팅" },
-];
+type Area = { no: string; title: string };
 
-export default function RnD() {
+export default function RnD({ no = "02" }: { no?: string }) {
+  const t = useTranslations("technology.rnd");
+  const label = useTranslations("labels");
+  const areas = t.raw("areas") as Area[];
+
   return (
-    <section className="bg-surface section-4g">
+    <section id="rnd" className="bg-surface section-4g scroll-mt-[72px]">
       <div className="container-4g">
         <FadeIn>
-          <SectionLabel>03 — R&amp;D</SectionLabel>
+          <SectionLabel>{`${no} — ${label("rnd")}`}</SectionLabel>
           <h2 className="max-w-3xl text-[26px] font-bold leading-snug md:text-[40px]">
-            기술이전과 자체 개발을 병행합니다.
+            {t("title")}
           </h2>
         </FadeIn>
 
         <FadeIn delay={120}>
           <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 md:mt-14 md:grid-cols-4">
-            {AREAS.map((a) => (
+            {areas.map((a) => (
               <li key={a.no} className="border-t border-line pt-4">
                 <p className="label-en text-blue">{a.no}</p>
                 <p className="mt-2 text-[15px] font-bold leading-snug md:text-base">

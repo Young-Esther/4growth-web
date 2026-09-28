@@ -11,29 +11,36 @@ type Props = {
   sizes?: string;
   /** 회색 박스·둥근 모서리 없이 이미지만 렌더 (Hero — 카탈로그 표지와 동일) */
   bare?: boolean;
+  /** 번역된 alt. 배열 슬롯이면 순서대로 적용한다. 없으면 lib/assets.ts 의 alt. */
+  alts?: string[];
 };
 
-/** SPEC §10 — 슬롯 ID 로 이미지를 꺼내 렌더한다. 배열 슬롯은 캐러셀이 된다. */
+/**
+ * SPEC §10 — 슬롯 ID 로 이미지를 꺼내 렌더한다. 배열 슬롯은 캐러셀이 된다.
+ * 파일이 아직 없는 슬롯(null)은 아무것도 렌더하지 않는다 (빈 회색 박스를 만들지 않는다).
+ */
 export default function AssetSlot({
   id,
   className = "",
   priority = false,
   sizes = "(max-width: 768px) 100vw, 50vw",
   bare = false,
+  alts,
 }: Props) {
   const entry = ASSETS[id];
+  if (!entry) return null;
 
   if (Array.isArray(entry)) {
     return (
       <ImageCarousel
-        images={entry}
+        images={entry.map((image, i) => ({ ...image, alt: alts?.[i] ?? image.alt }))}
         sizes={sizes}
         className={`overflow-hidden ${className}`}
       />
     );
   }
 
-  const asset = entry;
+  const asset = { ...entry, alt: alts?.[0] ?? entry.alt };
 
   if (bare) {
     // 래퍼 없이 이미지만. max-w/max-h 를 함께 걸면 비율이 유지된다.

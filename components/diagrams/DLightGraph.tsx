@@ -2,7 +2,10 @@
  * SPEC §4 (03-B) — DLight 그래프. 인라인 SVG (이미지 파일 아님).
  * 자연광 곡선 + LED 보충분 + 목표 누적광량선.
  * 수치 눈금은 표기하지 않는다 (실증 전이므로 SPEC상 시뮬레이션 수치 비노출).
+ * v0.2: 라벨은 COPY §DLight (그래프) 번역 문구. 가로축은 COPY 에 있는 `시간` 한 단어로 표기한다.
  */
+
+type Labels = { time: string; light: string; natural: string; led: string; target: string };
 
 const X0 = 56;
 const X1 = 612;
@@ -43,12 +46,12 @@ const ledArea = [
   "Z",
 ].join(" ");
 
-export default function DLightGraph() {
+export default function DLightGraph({ labels, summary }: { labels: Labels; summary: string }) {
   return (
     <svg
       viewBox="0 0 640 320"
       role="img"
-      aria-label="하루 동안 유입되는 자연광 곡선과, 목표 광량에서 부족한 만큼만 LED로 보충하는 구간을 나타낸 그래프"
+      aria-label={summary}
       className="w-full"
     >
       {/* 축 */}
@@ -74,29 +77,23 @@ export default function DLightGraph() {
         strokeDasharray="6 4"
       />
       <text x={X1} y={py(TARGET) - 10} textAnchor="end" fontSize="12" className="fill-ink">
-        목표 누적광량
+        {labels.target}
       </text>
 
       {/* 라벨 */}
       <text x={px(0.5)} y={py(natural(0.5)) - 12} textAnchor="middle" fontSize="12" className="fill-caption">
-        자연광
+        {labels.natural}
       </text>
       <text x={px(0.16)} y={py(0.28)} textAnchor="middle" fontSize="12" className="fill-blue">
-        LED 보충
+        {labels.led}
       </text>
       <text x={px(0.84)} y={py(0.28)} textAnchor="middle" fontSize="12" className="fill-blue">
-        LED 보충
+        {labels.led}
       </text>
 
       {/* 축 캡션 */}
-      <text x={X0} y={Y_BASE + 22} fontSize="11" className="fill-caption">
-        일출
-      </text>
-      <text x={px(0.5)} y={Y_BASE + 22} textAnchor="middle" fontSize="11" className="fill-caption">
-        정오
-      </text>
       <text x={X1} y={Y_BASE + 22} textAnchor="end" fontSize="11" className="fill-caption">
-        일몰
+        {labels.time}
       </text>
       <text
         x="14"
@@ -106,7 +103,7 @@ export default function DLightGraph() {
         className="fill-caption"
         transform={`rotate(-90 14 ${(Y_TOP + Y_BASE) / 2})`}
       >
-        광량
+        {labels.light}
       </text>
     </svg>
   );
