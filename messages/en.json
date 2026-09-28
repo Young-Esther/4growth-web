@@ -101,7 +101,10 @@
         "light": "Light",
         "natural": "Natural light",
         "led": "LED supplement",
-        "target": "Target DLI"
+        "target": "Target DLI",
+        "sunrise": "Sunrise",
+        "noon": "Noon",
+        "sunset": "Sunset"
       },
       "status": "In development · Field validation in progress",
       "patent": "Patent pending"

@@ -17,6 +17,14 @@
     overflow-wrap: anywhere;
   }
 
+  /*
+   * SPEC §1 (v0.2) — vi 로케일 본문 폰트. Pretendard 에 베트남어 성조 조합 글자가 없어
+   * Be Vietnam Pro 를 앞세우고, 한글·한자는 Pretendard 로 폴백한다. (app/[locale]/layout.tsx)
+   */
+  html:lang(vi) body {
+    font-family: var(--font-be-vietnam-pro), theme("fontFamily.sans");
+  }
+
   ::selection {
     @apply bg-blue text-white;
   }
@@ -37,6 +45,32 @@
   /* SPEC §1 — 섹션 상하 py-24 (모바일 py-16) */
   .section-4g {
     @apply py-16 md:py-24;
+  }
+
+  /* SPEC §3-5 — 소식 본문 (content/news/*.md → HTML). 타이포그래피 플러그인 없이 최소 규칙만. */
+  .news-body {
+    @apply text-[15px] leading-[1.8] text-ink/85 md:text-base;
+  }
+  .news-body > * + * {
+    @apply mt-5;
+  }
+  .news-body h2 {
+    @apply mt-10 text-xl font-bold text-ink;
+  }
+  .news-body h3 {
+    @apply mt-8 text-lg font-bold text-ink;
+  }
+  .news-body ul {
+    @apply list-disc pl-5;
+  }
+  .news-body ol {
+    @apply list-decimal pl-5;
+  }
+  .news-body a {
+    @apply font-bold text-blue underline underline-offset-4;
+  }
+  .news-body img {
+    @apply rounded-2xl;
   }
 
   /* SPEC §1 — 영문 라벨: 대문자 + letter-spacing 0.08em */

@@ -108,6 +108,7 @@
 | 부족분만큼 LED 출력 조절 | LED output fills the gap | Điều chỉnh đèn LED bù phần thiếu |
 | 목표 광량에서 부족한 만큼만 LED로 보충 | LEDs supply only what's missing from the target | Đèn LED chỉ bổ sung phần thiếu so với mục tiêu |
 | (그래프) 시간 / 광량 / 자연광 / LED 보충 / 목표 누적광량 | Time / Light / Natural light / LED supplement / Target DLI | Thời gian / Ánh sáng / Ánh sáng tự nhiên / Bổ sung LED / DLI mục tiêu |
+| (그래프 x축) 일출 / 정오 / 일몰 | Sunrise / Noon / Sunset | Bình minh / Giữa trưa / Hoàng hôn |
 | 개발 중 · 현장 검증 진행 중 | In development · Field validation in progress | Đang phát triển · Đang thử nghiệm thực địa |
 | 특허 출원 | Patent pending | Đã nộp đơn sáng chế |
 

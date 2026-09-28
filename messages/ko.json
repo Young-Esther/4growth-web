@@ -101,7 +101,10 @@
         "light": "광량",
         "natural": "자연광",
         "led": "LED 보충",
-        "target": "목표 누적광량"
+        "target": "목표 누적광량",
+        "sunrise": "일출",
+        "noon": "정오",
+        "sunset": "일몰"
       },
       "status": "개발 중 · 현장 검증 진행 중",
       "patent": "특허 출원"

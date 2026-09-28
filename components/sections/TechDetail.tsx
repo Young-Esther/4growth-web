@@ -160,11 +160,13 @@ export default function TechDetail() {
             <DLightGraph
               summary={t("dlight.summary")}
               labels={{
-                time: t("dlight.graph.time"),
                 light: t("dlight.graph.light"),
                 natural: t("dlight.graph.natural"),
                 led: t("dlight.graph.led"),
                 target: t("dlight.graph.target"),
+                sunrise: t("dlight.graph.sunrise"),
+                noon: t("dlight.graph.noon"),
+                sunset: t("dlight.graph.sunset"),
               }}
             />
           </div>

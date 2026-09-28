@@ -101,7 +101,10 @@
         "light": "Ánh sáng",
         "natural": "Ánh sáng tự nhiên",
         "led": "Bổ sung LED",
-        "target": "DLI mục tiêu"
+        "target": "DLI mục tiêu",
+        "sunrise": "Bình minh",
+        "noon": "Giữa trưa",
+        "sunset": "Hoàng hôn"
       },
       "status": "Đang phát triển · Đang thử nghiệm thực địa",
       "patent": "Đã nộp đơn sáng chế"

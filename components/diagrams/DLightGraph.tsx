@@ -2,10 +2,18 @@
  * SPEC §4 (03-B) — DLight 그래프. 인라인 SVG (이미지 파일 아님).
  * 자연광 곡선 + LED 보충분 + 목표 누적광량선.
  * 수치 눈금은 표기하지 않는다 (실증 전이므로 SPEC상 시뮬레이션 수치 비노출).
- * v0.2: 라벨은 COPY §DLight (그래프) 번역 문구. 가로축은 COPY 에 있는 `시간` 한 단어로 표기한다.
+ * v0.2: 라벨은 COPY §DLight (그래프 · 그래프 x축) 번역 문구. 가로축은 v0.1 대로 일출 / 정오 / 일몰.
  */
 
-type Labels = { time: string; light: string; natural: string; led: string; target: string };
+type Labels = {
+  light: string;
+  natural: string;
+  led: string;
+  target: string;
+  sunrise: string;
+  noon: string;
+  sunset: string;
+};
 
 const X0 = 56;
 const X1 = 612;
@@ -92,8 +100,14 @@ export default function DLightGraph({ labels, summary }: { labels: Labels; summa
       </text>
 
       {/* 축 캡션 */}
+      <text x={X0} y={Y_BASE + 22} fontSize="11" className="fill-caption">
+        {labels.sunrise}
+      </text>
+      <text x={px(0.5)} y={Y_BASE + 22} textAnchor="middle" fontSize="11" className="fill-caption">
+        {labels.noon}
+      </text>
       <text x={X1} y={Y_BASE + 22} textAnchor="end" fontSize="11" className="fill-caption">
-        {labels.time}
+        {labels.sunset}
       </text>
       <text
         x="14"
