@@ -16,10 +16,13 @@ export type Brand = {
   href: `/business/${string}`;
   /** 대표 사진 슬롯. 파일이 없으면(null 슬롯) 카드는 사진 없이 렌더된다. */
   image: AssetId;
+  /** 카드 이름 옆 상태 태그(StatusPill)의 messages 키. 없으면 태그 없음. */
+  status?: string;
 };
 
 export const BRANDS: Brand[] = [
-  { slug: "chadam", href: "/business/chadam", image: "CH-01" },
+  // TODO(SPEC §3-4): 출시(2027.01) 후 status 제거.
+  { slug: "chadam", href: "/business/chadam", image: "CH-01", status: "chadam.launch.tag" },
 ];
 
 /* ─── 차담 전용 (SPEC §3-4). 이 색은 차담 페이지에서만 쓴다. ─── */

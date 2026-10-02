@@ -170,6 +170,11 @@
     }
   },
   "chadam": {
+    "launch": {
+      "tag": "Ra mắt 01/2027",
+      "body": "Sản phẩm dự kiến chính thức ra mắt vào tháng 1 năm 2027. Nếu quý khách cần tư vấn mua hàng hoặc các vấn đề khác trước khi ra mắt, vui lòng để lại lời nhắn, chúng tôi sẽ phản hồi.",
+      "cta": "Liên hệ"
+    },
     "hero": {
       "body": "Buổi sáng, ban trưa, hoàng hôn, đêm trăng. Bốn loại trà thảo mộc Hàn Quốc, mỗi loại dành cho một thời điểm trong ngày, trong cùng một hộp quà.",
       "meaning": "茶談 — trà và câu chuyện",

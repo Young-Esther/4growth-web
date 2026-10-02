@@ -167,6 +167,13 @@
 | 茶談 — 차를 마시며 나누는 이야기 | 茶談 — tea and conversation | 茶談 — trà và câu chuyện |
 | 구매·수입 문의 | Purchase & import inquiry | Liên hệ mua hàng & nhập khẩu |
 
+### 출시 안내 [신규]
+| KO | EN | VI |
+|---|---|---|
+| 2027.01 출시 예정 | Launching Jan 2027 | Ra mắt 01/2027 |
+| 2027년 1월 정식 출시 예정입니다. 출시 전 구매 등의 상담은 문의 남겨주시면 답변 드리겠습니다. | Official launch is scheduled for January 2027. For purchases or other inquiries before launch, leave us a message and we will get back to you. | Sản phẩm dự kiến chính thức ra mắt vào tháng 1 năm 2027. Nếu quý khách cần tư vấn mua hàng hoặc các vấn đề khác trước khi ra mắt, vui lòng để lại lời nhắn, chúng tôi sẽ phản hồi. |
+| 문의하기 | Contact us | Liên hệ |
+
 ### 4종 (배합비·효능 표기 금지)
 | KO | EN | VI |
 |---|---|---|

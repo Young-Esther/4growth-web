@@ -1,11 +1,12 @@
 import { useTranslations } from "next-intl";
 import AssetSlot from "@/components/ui/AssetSlot";
 import ArrowText from "@/components/ui/ArrowText";
+import StatusPill from "@/components/ui/StatusPill";
 import { Link } from "@/i18n/navigation";
 import type { Brand } from "@/lib/brands";
 
 /**
- * SPEC §3-3 — 브랜드 카드: 패키지 사진(4:3) + 이름 + 슬로건 + 1줄 설명 + 자세히 보기.
+ * SPEC §3-3 — 브랜드 카드: 패키지 사진(4:3) + 이름(+ 상태 태그) + 슬로건 + 1줄 설명 + 자세히 보기.
  * 사진 슬롯이 비어 있으면 사진 자리를 만들지 않고 글만 보인다.
  * `compact` 는 홈 미리보기용 (사진 + 이름 + 슬로건, SPEC §3-1 4번).
  */
@@ -21,6 +22,7 @@ export default function BrandCard({
 }) {
   const t = useTranslations(`brands.${brand.slug}`);
   const common = useTranslations("common");
+  const root = useTranslations();
 
   return (
     <Link
@@ -35,7 +37,10 @@ export default function BrandCard({
       />
       <div className="flex flex-1 flex-col p-6 md:p-8">
         {heading && <p className="mb-4 text-sm font-bold text-caption">{heading}</p>}
-        <p className="text-[22px] font-bold md:text-[26px]">{t("name")}</p>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <p className="text-[22px] font-bold md:text-[26px]">{t("name")}</p>
+          {brand.status && <StatusPill>{root(brand.status)}</StatusPill>}
+        </div>
         <p className="mt-1.5 text-[15px] text-blue">{t("slogan")}</p>
         {!compact && <p className="mt-4 text-sm leading-relaxed text-ink/70">{t("desc")}</p>}
         <div className="mt-auto pt-6">
