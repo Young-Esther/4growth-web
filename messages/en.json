@@ -165,7 +165,8 @@
     "chadam": {
       "name": "Chadam 茶談",
       "slogan": "Drink the Time",
-      "desc": "A gift set of four Korean herbal blends for four times of day"
+      "desc": "A gift set of four Korean herbal blends for four times of day",
+      "imageAlt": "Chadam gift set — Morning, Day, Evening and Night Tea"
     }
   },
   "chadam": {
@@ -176,27 +177,27 @@
     },
     "teas": [
       {
-        "name": "Haetsal",
-        "time": "Morning",
-        "line": "To open the day",
+        "name": "Morning Tea",
+        "time": "Haetsal",
+        "line": "A clear, fresh start to the day",
         "ingredients": "Red ginseng rootlets, goji berry, schisandra, liriope root, astragalus, cinnamon"
       },
       {
-        "name": "Hannat",
-        "time": "Midday",
-        "line": "For a midday pause",
+        "name": "Day Tea",
+        "time": "Hannat",
+        "line": "A fresh, light pause in the middle of the day",
         "ingredients": "Peony root, angelica root, cnidium, astragalus, prepared rehmannia, cinnamon bark, licorice, liriope root, schisandra, goji berry, kudzu root, jujube"
       },
       {
-        "name": "Noeul",
-        "time": "Afternoon",
-        "line": "As the day winds down",
+        "name": "Evening Tea",
+        "time": "Noeul",
+        "line": "A warm, gentle close to the day",
         "ingredients": "Red ginseng rootlets, atractylodes, poria, licorice, prepared rehmannia, cnidium, angelica root, white peony root, astragalus, cinnamon bark"
       },
       {
-        "name": "Dalbam",
-        "time": "Night",
-        "line": "To close the day",
+        "name": "Night Tea",
+        "time": "Dalbam",
+        "line": "A calm, quiet time of your own",
         "ingredients": "Red ginseng rootlets, astragalus, atractylodes, poria, angelica root, longan, jujube seed, polygala root, fushen poria, lotus seed, costus root, licorice"
       }
     ],

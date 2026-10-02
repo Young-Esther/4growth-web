@@ -170,13 +170,13 @@
 ### 4종 (배합비·효능 표기 금지)
 | KO | EN | VI |
 |---|---|---|
-| **햇살차** · 아침 — 하루를 여는 아침에 | **Haetsal** · Morning — To open the day | **Trà Nắng Mai** · Buổi sáng — Để khởi đầu ngày mới |
+| **햇살차** · 아침 — 맑고 산뜻한 하루의 시작 | **Morning Tea** · Haetsal — A clear, fresh start to the day | **Trà Nắng Mai** · Buổi sáng — Khởi đầu ngày mới trong trẻo, tươi mát |
 | 홍미삼, 구기자, 오미자, 맥문동, 황기, 시나몬 | Red ginseng rootlets, goji berry, schisandra, liriope root, astragalus, cinnamon | Rễ con hồng sâm, câu kỷ tử, ngũ vị tử, mạch môn, hoàng kỳ, quế |
-| **한낮차** · 점심 — 한낮의 쉼에 | **Hannat** · Midday — For a midday pause | **Trà Ban Trưa** · Buổi trưa — Cho phút nghỉ giữa ngày |
+| **한낮차** · 낮 — 싱그럽고 가벼운 가운데의 쉼 `[확인 필요: 인쇄 문구 대조]` | **Day Tea** · Hannat — A fresh, light pause in the middle of the day | **Trà Ban Trưa** · Ban ngày — Phút nghỉ nhẹ nhàng, tươi mát giữa ngày |
 | 작약, 당귀, 천궁, 황기, 숙지황, 육계, 감초, 맥문동, 오미자, 구기자, 갈근, 대추 | Peony root, angelica root, cnidium, astragalus, prepared rehmannia, cinnamon bark, licorice, liriope root, schisandra, goji berry, kudzu root, jujube | Thược dược, đương quy, xuyên khung, hoàng kỳ, thục địa, nhục quế, cam thảo, mạch môn, ngũ vị tử, câu kỷ tử, cát căn, táo tàu |
-| **노을차** · 오후 — 하루가 저무는 오후에 | **Noeul** · Afternoon — As the day winds down | **Trà Hoàng Hôn** · Buổi chiều — Khi chiều buông |
+| **노을차** · 저녁 — 따스하고 편안한 하루의 마무리 | **Evening Tea** · Noeul — A warm, gentle close to the day | **Trà Hoàng Hôn** · Buổi tối — Khép lại một ngày ấm áp, dịu dàng |
 | 홍미삼, 백출, 백복령, 감초, 숙지황, 천궁, 당귀, 백작약, 황기, 육계 | Red ginseng rootlets, atractylodes, poria, licorice, prepared rehmannia, cnidium, angelica root, white peony root, astragalus, cinnamon bark | Rễ con hồng sâm, bạch truật, bạch phục linh, cam thảo, thục địa, xuyên khung, đương quy, bạch thược, hoàng kỳ, nhục quế |
-| **달밤차** · 밤 — 하루를 마무리하는 밤에 | **Dalbam** · Night — To close the day | **Trà Đêm Trăng** · Buổi tối — Để khép lại một ngày |
+| **달밤차** · 밤 — 차분하고 깊은 나만의 시간 | **Night Tea** · Dalbam — A calm, quiet time of your own | **Trà Đêm Trăng** · Ban đêm — Khoảng thời gian tĩnh lặng, sâu lắng của riêng bạn |
 | 홍미삼, 황기, 백출, 복령, 당귀, 용안육, 산조인, 원지, 복신, 연자육, 목향, 감초 | Red ginseng rootlets, astragalus, atractylodes, poria, angelica root, longan, jujube seed, polygala root, fushen poria, lotus seed, costus root, licorice | Rễ con hồng sâm, hoàng kỳ, bạch truật, phục linh, đương quy, long nhãn, toan táo nhân, viễn chí, phục thần, liên nhục, mộc hương, cam thảo |
 
 ### 패키지
@@ -184,7 +184,12 @@
 |---|---|---|
 | 하루를 담은 상자 | A box that holds a day | Chiếc hộp chứa trọn một ngày |
 | 24시간 시계 다이얼에서 가져온 패키지 디자인. 네 가지 색과 아이콘으로 하루의 시간을 나눴습니다. | Packaging inspired by a 24-hour clock dial. Four colors and icons divide the hours of the day. | Thiết kế bao bì lấy cảm hứng từ mặt đồng hồ 24 giờ. Bốn màu sắc và biểu tượng chia các khoảng thời gian trong ngày. |
-| 구성: 4종 · 티백 4g × `[확인 필요]` | Contents: 4 blends · 4g tea bags × `[TBD]` | Thành phần: 4 loại · túi lọc 4g × `[TBD]` |
+| 구성: 4종 · 티백 `[확인 필요: g]` × `[확인 필요: 개수]` | Contents: 4 blends · `[TBD]`g tea bags × `[TBD]` | Thành phần: 4 loại · túi lọc `[TBD]`g × `[TBD]` |
+
+### 이미지 alt
+| KO | EN | VI |
+|---|---|---|
+| 차담 기프트 세트 — 햇살차, 한낮차, 노을차, 달밤차 | Chadam gift set — Morning, Day, Evening and Night Tea | Bộ quà tặng Chadam — bốn loại trà cho bốn thời điểm trong ngày |
 
 ### 선택 문구 (0-1에서 노출 결정 시에만)
 | KO | EN | VI |

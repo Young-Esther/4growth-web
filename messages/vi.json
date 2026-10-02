@@ -165,7 +165,8 @@
     "chadam": {
       "name": "Chadam 茶談",
       "slogan": "Nhâm nhi thời gian",
-      "desc": "Bộ quà tặng bốn loại trà thảo mộc Hàn Quốc cho bốn thời điểm trong ngày"
+      "desc": "Bộ quà tặng bốn loại trà thảo mộc Hàn Quốc cho bốn thời điểm trong ngày",
+      "imageAlt": "Bộ quà tặng Chadam — bốn loại trà cho bốn thời điểm trong ngày"
     }
   },
   "chadam": {
@@ -178,25 +179,25 @@
       {
         "name": "Trà Nắng Mai",
         "time": "Buổi sáng",
-        "line": "Để khởi đầu ngày mới",
+        "line": "Khởi đầu ngày mới trong trẻo, tươi mát",
         "ingredients": "Rễ con hồng sâm, câu kỷ tử, ngũ vị tử, mạch môn, hoàng kỳ, quế"
       },
       {
         "name": "Trà Ban Trưa",
-        "time": "Buổi trưa",
-        "line": "Cho phút nghỉ giữa ngày",
+        "time": "Ban ngày",
+        "line": "Phút nghỉ nhẹ nhàng, tươi mát giữa ngày",
         "ingredients": "Thược dược, đương quy, xuyên khung, hoàng kỳ, thục địa, nhục quế, cam thảo, mạch môn, ngũ vị tử, câu kỷ tử, cát căn, táo tàu"
       },
       {
         "name": "Trà Hoàng Hôn",
-        "time": "Buổi chiều",
-        "line": "Khi chiều buông",
+        "time": "Buổi tối",
+        "line": "Khép lại một ngày ấm áp, dịu dàng",
         "ingredients": "Rễ con hồng sâm, bạch truật, bạch phục linh, cam thảo, thục địa, xuyên khung, đương quy, bạch thược, hoàng kỳ, nhục quế"
       },
       {
         "name": "Trà Đêm Trăng",
-        "time": "Buổi tối",
-        "line": "Để khép lại một ngày",
+        "time": "Ban đêm",
+        "line": "Khoảng thời gian tĩnh lặng, sâu lắng của riêng bạn",
         "ingredients": "Rễ con hồng sâm, hoàng kỳ, bạch truật, phục linh, đương quy, long nhãn, toan táo nhân, viễn chí, phục thần, liên nhục, mộc hương, cam thảo"
       }
     ],

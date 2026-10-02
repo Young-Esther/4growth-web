@@ -7,7 +7,11 @@ type Tea = { name: string; time: string; line: string; ingredients: string };
 
 /**
  * SPEC §3-4 2번 — 4종 카드. 데스크톱 4열 / 모바일 2×2.
- * 상단 색띠 + 아이콘 · 차 이름 · 시간대 · 1줄 문구 · 재료 목록.
+ * 상단 색띠 + 아이콘 · 차 이름(크게) · 작은 줄 · 1줄 문구 · 재료 목록.
+ * 문구는 패키지 띠지 인쇄 문구에 맞춘다 (COPY §차담 > 4종).
+ *   `name` — KO/VI 차 이름, EN 은 패키지 영문명 (Morning Tea …).
+ *   `time` — KO/VI 시간대, EN 은 로마자 이름 (Haetsal …).
+ * TODO(COPY · [확인 필요: 인쇄 문구 대조]): 한낮차 1줄 문구는 인쇄본과 대조 전. 문구는 그대로 노출한다.
  * 배합비·효능 문구는 쓰지 않는다. 처방 유래명도 쓰지 않는다 (SPEC 0-1).
  */
 export default function ChadamTeas() {

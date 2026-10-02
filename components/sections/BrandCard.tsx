@@ -29,6 +29,7 @@ export default function BrandCard({
     >
       <AssetSlot
         id={brand.image}
+        alts={[t("imageAlt")]}
         sizes="(max-width: 768px) 100vw, 50vw"
         className="aspect-[4/3] w-full"
       />

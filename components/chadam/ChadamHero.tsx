@@ -47,6 +47,7 @@ export default function ChadamHero() {
           <FadeIn delay={120}>
             <AssetSlot
               id="CH-01"
+              alts={[brand("imageAlt")]}
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
               className="aspect-[4/3] w-full rounded-2xl"

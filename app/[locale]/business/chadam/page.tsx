@@ -7,19 +7,18 @@ import ChadamVideo from "@/components/chadam/ChadamVideo";
 import CtaBand from "@/components/sections/CtaBand";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
-
 type Props = { params: Promise<{ locale: Locale }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale });
-  // TODO(SPEC §5, §6 CH-OG): CH-01 사진이 들어오면 1200×630 크롭으로 차담 전용 OG 이미지를 넣는다.
-  //   지금은 v0.1 공용 OG (lib/seo.ts).
+  // SPEC §5, §6 CH-OG — CH-01 의 1200×630 크롭.
   return pageMetadata({
     locale,
     path: "/business/chadam",
     title: t("meta.chadamTitle"),
     description: t("brands.chadam.desc"),
+    ogImage: { url: "/assets/chadam/og.jpg", alt: t("brands.chadam.imageAlt") },
   });
 }
 

@@ -120,11 +120,16 @@ export const ASSETS: Record<AssetId, AssetEntry | null> = {
     alt: "4GROWTH",
     fit: "contain",
   },
-  // TODO(SPEC 0-1, §6 CH-01 · 필수): 차담 세트 전체 사진 (정면, 흰 배경) — set.jpg.
-  //   들어오면 { src: "/assets/chadam/set.jpg", width, height, alt, fit: "cover" } 로 채운다.
-  //   차담 Hero · 브랜드 카드 · 홈 미리보기가 자동으로 사진을 표시한다. 사진 전에는 main 머지 금지.
-  //   alt 문구는 COPY 에 없으므로 함께 받아야 한다.
-  "CH-01": null,
+  // SPEC §6 CH-01 — 차담 패키지 연출 사진. 차담 Hero · 브랜드 카드 · 홈 미리보기.
+  //   OG 크롭(1200×630, 세로 190~950px)은 /assets/chadam/og.jpg — 차담 페이지 metadata 에서 쓴다.
+  //   번역 alt 는 messages `brands.chadam.imageAlt` (COPY §차담 > 이미지 alt).
+  "CH-01": {
+    src: "/assets/chadam/set.jpg",
+    width: 1448,
+    height: 1086,
+    alt: "차담 기프트 세트 — 햇살차, 한낮차, 노을차, 달밤차",
+    fit: "cover",
+  },
   // TODO(SPEC §6 CH-02 · 권장): 4종 티백 나란히 — 차담 패키지 섹션.
   "CH-02": null,
   // TODO(SPEC §6 CH-03 · 선택): 연출컷 (테이블·찻잔) — 차담 패키지 캐러셀.

@@ -12,11 +12,14 @@ export function pageMetadata({
   path,
   title,
   description,
+  ogImage = { url: "/assets/og.png", alt: "4GROWTH" },
 }: {
   locale: Locale;
   path: string;
   title: string;
   description: string;
+  /** 1200×630. 없으면 v0.1 공용 OG. */
+  ogImage?: { url: string; alt: string };
 }): Metadata {
   const languages: Record<string, string> = Object.fromEntries(
     routing.locales.map((l) => [l, `/${l}${path}`]),
@@ -35,8 +38,7 @@ export function pageMetadata({
       siteName: "4GROWTH",
       title,
       description,
-      // v0.1 OG 이미지 공용 (SPEC §5). 차담 전용 OG 는 CH-01 사진 확보 후.
-      images: [{ url: "/assets/og.png", width: 1200, height: 630, alt: "4GROWTH" }],
+      images: [{ ...ogImage, width: 1200, height: 630 }],
     },
   };
 }
