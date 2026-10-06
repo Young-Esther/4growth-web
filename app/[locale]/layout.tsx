@@ -29,6 +29,7 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  verification: { other: { "naver-site-verification": "be6ba30f255ca8f402531d49544ebfaead7bfd13" } },
 };
 
 export const viewport: Viewport = {
