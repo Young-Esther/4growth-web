@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { NewsCategory } from "@/lib/news";
 
-type Item = { category: NewsCategory; card: React.ReactNode; key: string };
+type Item = { category: NewsCategory | null; card: React.ReactNode; key: string };
 
 /**
  * SPEC §3-5 — 카테고리 칩 + 카드 리스트. `?category=` 로 필터한다.

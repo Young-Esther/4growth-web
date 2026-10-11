@@ -222,7 +222,8 @@
       "notice": "Thông báo"
     },
     "backToList": "Quay lại danh sách",
-    "koreanOnly": "Bài viết này chỉ có bằng tiếng Hàn."
+    "koreanOnly": "Bài viết này chỉ có bằng tiếng Hàn.",
+    "loadError": "Không thể tải tin tức."
   },
   "contact": {
     "title": "Chúng ta có thể hợp tác như thế nào?",

@@ -13,6 +13,9 @@ import { pageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
+/** 최신 소식(HQ 포함)을 60초마다 다시 읽는다 */
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
@@ -23,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const news = getNewsList(locale);
+  const { posts: news } = await getNewsList(locale);
 
   return (
     <>

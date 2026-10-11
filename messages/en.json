@@ -222,7 +222,8 @@
       "notice": "Notices"
     },
     "backToList": "Back to list",
-    "koreanOnly": "This article is available in Korean only."
+    "koreanOnly": "This article is available in Korean only.",
+    "loadError": "We couldn’t load the news."
   },
   "contact": {
     "title": "How can we work together?",

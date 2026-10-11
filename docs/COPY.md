@@ -218,6 +218,7 @@
 | 공지 | Notices | Thông báo |
 | 목록으로 | Back to list | Quay lại danh sách |
 | 이 글은 한국어로만 제공됩니다. | This article is available in Korean only. | Bài viết này chỉ có bằng tiếng Hàn. |
+| 소식을 불러오지 못했습니다. | We couldn’t load the news. | Không thể tải tin tức. |
 
 ### 게시물: `dlight-patent` (notice, 2026-08-24) — 확정
 | KO | EN | VI |

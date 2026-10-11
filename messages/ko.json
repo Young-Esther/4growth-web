@@ -222,7 +222,8 @@
       "notice": "공지"
     },
     "backToList": "목록으로",
-    "koreanOnly": "이 글은 한국어로만 제공됩니다."
+    "koreanOnly": "이 글은 한국어로만 제공됩니다.",
+    "loadError": "소식을 불러오지 못했습니다."
   },
   "contact": {
     "title": "어떤 방식으로 함께할 수 있나요?",

@@ -18,7 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: "/business/chadam",
     title: t("meta.chadamTitle"),
     description: t("brands.chadam.desc"),
-    ogImage: { url: "/assets/chadam/og.jpg", alt: t("brands.chadam.imageAlt") },
+    ogImage: {
+      url: "/assets/chadam/og.jpg",
+      alt: t("brands.chadam.imageAlt"),
+      width: 1200,
+      height: 630,
+    },
   });
 }
 

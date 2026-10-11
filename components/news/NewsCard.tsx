@@ -6,7 +6,7 @@ import type { Locale } from "@/i18n/routing";
 import { formatDate } from "@/lib/format";
 import type { NewsMeta } from "@/lib/news";
 
-/** SPEC §3-5 — 소식 카드: 커버(있을 때만) · 카테고리 pill · 날짜 · 제목 · 요약 */
+/** SPEC §3-5 — 소식 카드: 커버(있을 때만) · 카테고리 pill(HQ 글은 없음) · 날짜 · 제목 · 요약 */
 export default function NewsCard({ post }: { post: NewsMeta }) {
   const t = useTranslations("news.categories");
   const locale = useLocale() as Locale;
@@ -28,7 +28,7 @@ export default function NewsCard({ post }: { post: NewsMeta }) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <div className="flex flex-wrap items-center gap-3">
-          <StatusPill>{t(post.category)}</StatusPill>
+          {post.category && <StatusPill>{t(post.category)}</StatusPill>}
           <time dateTime={post.date} className="text-sm text-caption">
             {formatDate(post.date, locale)}
           </time>

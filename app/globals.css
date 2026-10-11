@@ -47,7 +47,7 @@
     @apply py-16 md:py-24;
   }
 
-  /* SPEC §3-5 — 소식 본문 (content/news/*.md → HTML). 타이포그래피 플러그인 없이 최소 규칙만. */
+  /* SPEC §3-5 — 소식 본문 (content/news/*.md 또는 HQ body_html). 타이포그래피 플러그인 없이 최소 규칙만. */
   .news-body {
     @apply text-[15px] leading-[1.8] text-ink/85 md:text-base;
   }
@@ -71,6 +71,27 @@
   }
   .news-body img {
     @apply rounded-2xl;
+  }
+  /* HQ 본문은 임의 HTML — 미디어·표·코드가 모바일 폭을 넘지 않게 */
+  .news-body img,
+  .news-body video {
+    @apply h-auto max-w-full;
+  }
+  .news-body iframe {
+    @apply max-w-full;
+  }
+  .news-body table,
+  .news-body pre {
+    @apply block max-w-full overflow-x-auto;
+  }
+  .news-body figcaption {
+    @apply mt-2 text-sm text-caption;
+  }
+  .news-body blockquote {
+    @apply border-l-2 border-line pl-4 text-ink/70;
+  }
+  .news-body hr {
+    @apply border-line;
   }
 
   /* SPEC §1 — 영문 라벨: 대문자 + letter-spacing 0.08em */

@@ -120,7 +120,7 @@ v0.1 원칙(큰 사진, 짧은 문장, 여백)을 따른다. 이 페이지에만
 5. **문의 띠** — 문의 CTA 띠(3-1의 6번)를 재사용하되 버튼은 `구매·수입 문의` → `/contact?type=chadam`
 
 ### 3-5. 소식 `/news`, `/news/[slug]`
-- 콘텐츠는 파일로 관리한다. CMS는 쓰지 않는다.
+- 별도 CMS는 쓰지 않는다. 소식은 4growth HQ에서 작성·게시하고 사이트는 공개 API를 읽기만 한다.
   ```
   content/news/<slug>/ko.md   (필수)
   content/news/<slug>/en.md   (선택)
