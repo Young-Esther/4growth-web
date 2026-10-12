@@ -2,6 +2,7 @@
 title: "Nộp đơn sáng chế công nghệ điều khiển chiếu sáng bổ sung DLight"
 date: "2026-08-24"
 category: notice
+auto: false
 summary: "Chúng tôi đã nộp đơn sáng chế cho phương pháp và hệ thống điều khiển chiếu sáng bổ sung theo từng khu vực canh tác."
 ---
 

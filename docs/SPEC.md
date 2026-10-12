@@ -130,6 +130,8 @@ v0.1 원칙(큰 사진, 짧은 문장, 여백)을 따른다. 이 페이지에만
   ```
   frontmatter: `title`, `date`(YYYY-MM-DD), `category`(`notice` | `event` | `award` | `press` | `product`, HQ 공개 API 의 category 와 같은 값), `summary`(1줄), `cover`(선택)
 - 파싱: `gray-matter` + `remark`/`remark-html`(또는 동급 경량 라이브러리). `generateStaticParams`로 정적 생성한다.
+- 소식은 항상 브랜치에서 ko.md만 작성한다. en/vi는 GitHub Actions가 자동 생성(auto: true). 사람이 번역을 고치면 auto: false로 바꾼다. main에 직접 소식을 올리지 않는다.
+  (`scripts/translate-news.mjs` · `.github/workflows/news-translate.yml`. 번역 파일 frontmatter `source_hash` = ko.md sha256 앞 12자리 — ko.md 가 바뀌면 auto: true 번역만 다시 만든다.)
 - 해당 로케일 파일이 없으면 ko 본문을 보여준다. 이때 상단에 안내 1줄을 띄운다 (COPY: "이 글은 한국어로만 제공됩니다").
 - **목록**: 페이지 헤더 + 카테고리 칩(전체 / 공지 / 행사 / 수상·선정 / 언론 보도 / 제품, `?category=`로 필터) + 카드 리스트. 날짜 내림차순. 카드에는 커버(있을 때만), 카테고리 pill, 날짜, 제목, 요약을 표시한다.
   - 글이 1건 이상 있는 카테고리만 칩을 표시한다.

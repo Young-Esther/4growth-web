@@ -2,6 +2,7 @@
 title: "DLight supplemental lighting control: patent application filed"
 date: "2026-08-24"
 category: notice
+auto: false
 summary: "We filed a patent application for a zone-based supplemental lighting control method and system."
 ---
 

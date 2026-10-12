@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "i18n:check": "node scripts/i18n-check.mjs"
+    "i18n:check": "node scripts/i18n-check.mjs",
+    "news:translate": "node scripts/translate-news.mjs"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -20,6 +21,7 @@
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
