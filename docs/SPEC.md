@@ -133,6 +133,7 @@ v0.1 원칙(큰 사진, 짧은 문장, 여백)을 따른다. 이 페이지에만
 - 소식은 항상 브랜치에서 ko.md만 작성한다. en/vi는 GitHub Actions가 자동 생성(auto: true). 사람이 번역을 고치면 auto: false로 바꾼다. main에 직접 소식을 올리지 않는다.
   (`scripts/translate-news.mjs` · `.github/workflows/news-translate.yml`. 번역 파일 frontmatter `source_hash` = ko.md sha256 앞 12자리 — ko.md 가 바뀌면 auto: true 번역만 다시 만든다.)
 - draft 글은 번역하지 않는다. 게시(draft 제거) 시점에 번역된다.
+- HQ 글은 공개 API 의 title·body_html 이 그 언어 값으로 오면 그 언어로 보여 주고, 없으면 ko 본문 + "이 글은 한국어로만 제공됩니다". 번역 규칙과 API 형식은 `docs/TRANSLATION_RULES.md` (HQ 에 넘기는 문서).
 - 해당 로케일 파일이 없으면 ko 본문을 보여준다. 이때 상단에 안내 1줄을 띄운다 (COPY: "이 글은 한국어로만 제공됩니다").
 - **목록**: 페이지 헤더 + 카테고리 칩(전체 / 공지 / 행사 / 수상·선정 / 언론 보도 / 제품, `?category=`로 필터) + 카드 리스트. 날짜 내림차순. 카드에는 커버(있을 때만), 카테고리 pill, 날짜, 제목, 요약을 표시한다.
   - 글이 1건 이상 있는 카테고리만 칩을 표시한다.
@@ -140,9 +141,7 @@ v0.1 원칙(큰 사진, 짧은 문장, 여백)을 따른다. 이 페이지에만
 - 날짜 형식: ko `2026.09.30` / en `Sep 30, 2026` / vi `30/09/2026`.
 - **초기 게시물 규칙**: 검증된 사실만 올린다. `[확인 필요]`가 남은 글은 `draft: true`로 두고 빌드에서 제외한다.
   - `dlight-patent` (notice, 2026-08-24) — 내용 확정. 바로 게시
-  - `vietnam-expo-2026` (event) — 박람회 정보 받으면 게시
-  - `agri-expo-2026-09` (event) — 명칭 확정 시 게시
-  - `chungnam-idea-final` (award) — 발표일 확정 시 게시
+  - `vietnam-expo-2026` · `agri-expo-2026-09` · `chungnam-idea-final` — HQ 소식과 중복이라 md 를 지웠다 (v0.4). HQ 에서 작성·게시한다.
 
 ### 3-6. 문의 `/contact`
 - v0.1 §8 레이아웃 그대로. 좌측 협업 방식 4개 뒤에 5번째로 `차담 구매·수입`을 추가한다.

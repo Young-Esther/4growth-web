@@ -1,9 +1,12 @@
 /**
  * 4growth HQ 공개 API — 소식. 서버에서만 호출하고 응답은 60초마다 갱신한다 (ISR).
  *
- *   GET {base}/api/public/4growth/posts         → [{ slug, title, excerpt, published_at, cover_url, category? }]
- *   GET {base}/api/public/4growth/posts/{slug}  → { title, body_html, images[], published_at, updated_at }
+ *   GET {base}/api/public/4growth/posts         → [{ slug, title, excerpt, category, category_label, tags, published_at, cover_url }]
+ *   GET {base}/api/public/4growth/posts/{slug}  → { slug, title, body_html, images[], category, category_label, tags, published_at, updated_at }
  *                                                  없는 slug 는 404 { error: "not found" }
+ *
+ * title · excerpt · body_html 은 문자열(한국어만) 또는 언어별 객체 { ko, en?, vi? } 다
+ * (규격: docs/TRANSLATION_RULES.md). 2026-10-13 현재 HQ 는 문자열만 보낸다.
  *
  * NEXT_PUBLIC_HQ_API_BASE 가 없으면 HQ 글 없이 동작한다 (파일 소식만).
  * API 가 죽어 있어도 예외를 던지지 않고 `error` 로 돌려준다 — 페이지에서 안내 문구를 띄운다.
@@ -15,20 +18,23 @@ const BASE = process.env.NEXT_PUBLIC_HQ_API_BASE?.replace(/\/+$/, "") || null;
 const ORIGIN = BASE ? new URL(BASE).origin : null;
 const TIMEOUT_MS = 8000;
 
+/** 언어별 값. ko 는 항상 있고 en·vi 는 HQ 가 번역해 보냈을 때만 있다. */
+export type Localized = { ko: string; en?: string; vi?: string };
+
 export type HqListItem = {
   slug: string;
-  title: string;
-  excerpt: string;
+  title: Localized;
+  excerpt: Localized;
   /** YYYY-MM-DD (KST) */
   date: string;
   cover?: string;
-  /** notice | event | award | press | product. 2026-10-12 현재 HQ 응답에는 아직 없다. */
+  /** notice | event | award | press | product */
   category: string | null;
 };
 
 export type HqPost = {
-  title: string;
-  html: string;
+  title: Localized;
+  html: Localized;
   images: string[];
   /** YYYY-MM-DD (KST) */
   date: string;
@@ -83,6 +89,22 @@ function toImageUrl(value: unknown): string | undefined {
 
 const str = (v: unknown) => (typeof v === "string" ? v : "");
 
+/** 문자열이면 한국어로, { ko, en, vi } 면 언어별로. 한국어 값이 없으면 null. */
+function localized(value: unknown): Localized | null {
+  if (typeof value === "string") return value ? { ko: value } : null;
+  if (!value || typeof value !== "object") return null;
+  const v = value as Record<string, unknown>;
+  const ko = str(v.ko);
+  if (!ko) return null;
+  return { ko, en: str(v.en) || undefined, vi: str(v.vi) || undefined };
+}
+
+const mapLocalized = (l: Localized, fn: (s: string) => string): Localized => ({
+  ko: fn(l.ko),
+  en: l.en === undefined ? undefined : fn(l.en),
+  vi: l.vi === undefined ? undefined : fn(l.vi),
+});
+
 /** HQ 가 설정되지 않았으면 빈 목록 (error 아님) */
 export async function getHqList(): Promise<{ posts: HqListItem[]; error: boolean }> {
   if (!BASE) return { posts: [], error: false };
@@ -91,7 +113,7 @@ export async function getHqList(): Promise<{ posts: HqListItem[]; error: boolean
 
   const posts = res.json.flatMap((item): HqListItem[] => {
     const slug = str(item?.slug);
-    const title = str(item?.title);
+    const title = localized(item?.title);
     const date = toKstDate(item?.published_at);
     if (!slug || !title || !date) return [];
     return [
@@ -99,7 +121,7 @@ export async function getHqList(): Promise<{ posts: HqListItem[]; error: boolean
         slug,
         title,
         date,
-        excerpt: str(item?.excerpt),
+        excerpt: localized(item?.excerpt) ?? { ko: "" },
         cover: toImageUrl(item?.cover_url),
         category: str(item?.category) || null,
       },
@@ -116,7 +138,7 @@ export async function getHqPost(
   if (res.status !== "ok") return res;
 
   const data = res.json as Record<string, unknown> | null;
-  const title = str(data?.title);
+  const title = localized(data?.title);
   const date = toKstDate(data?.published_at);
   if (!title || !date) return { status: "error" };
 
@@ -124,6 +146,8 @@ export async function getHqPost(
     .map(toImageUrl)
     .filter((u): u is string => Boolean(u));
   // 본문의 상대 경로 이미지(src="/uploads/…")는 사이트가 아니라 HQ 기준이다
-  const html = str(data?.body_html).replace(/(\ssrc=["'])\/(?!\/)/g, `$1${BASE}/`);
+  const html = mapLocalized(localized(data?.body_html) ?? { ko: "" }, (h) =>
+    h.replace(/(\ssrc=["'])\/(?!\/)/g, `$1${BASE}/`),
+  );
   return { status: "ok", post: { title, date, html, images, category: str(data?.category) || null } };
 }
