@@ -42,7 +42,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          # 로컬·Vercel 과 같은 Node 24 (npm 11). npm 10 은 이 lock 파일로 npm ci 를 거절한다.
+          node-version: 24
           cache: npm
 
       - run: npm ci
