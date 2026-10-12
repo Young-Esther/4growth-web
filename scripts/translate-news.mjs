@@ -7,6 +7,7 @@
  *   b) 번역 파일이 `auto: true` 이고 `source_hash` 가 지금 ko.md 의 sha256 앞 12자리와 다르다
  *   번역 파일에 `auto: false` 가 있으면(사람이 고친 것) 절대 덮어쓰지 않는다.
  *   auto 표시가 없는 기존 번역 파일도 사람이 쓴 것으로 보고 건드리지 않는다.
+ *   ko.md 가 `draft: true` 인 글은 제외한다 — 게시(draft 제거) push 때 번역된다.
  *
  * 번역 뒤 숫자·날짜·URL·[확인 필요]/[TBD] 개수를 원문과 대조한다. 다르면 그 언어 파일을 쓰지 않고 실패로 남긴다.
  *
@@ -36,6 +37,7 @@ Rules:
 - Keep placeholders like [확인 필요] or [TBD] exactly as they are.
 - Keep markdown structure. Keep the tone short and factual, matching docs/COPY.md.
 - Vietnamese: natural business Vietnamese, not word-for-word.
+- Always write numbers as Arabic numerals, including ordinals (e.g. 2회차 → 2nd round, 제2회 → 2nd). Never spell numbers out as words.
 Output only the translated markdown body, no commentary.`;
 
 // ── 대상 판정 ────────────────────────────────────────────────────────────
@@ -255,9 +257,16 @@ async function main() {
   }
 
   const jobs = [];
+  const drafts = [];
   for (const s of slugs) {
     const dir = join(NEWS_DIR, s);
-    const hash = sourceHash(readFileSync(join(dir, "ko.md"), "utf8"));
+    const koRaw = readFileSync(join(dir, "ko.md"), "utf8");
+    // draft 는 번역하지 않는다 — draft 를 지우는 push 때 ko.md 가 바뀌므로 그때 번역된다
+    if (matter(koRaw).data.draft === true) {
+      drafts.push(s);
+      continue;
+    }
+    const hash = sourceHash(koRaw);
     for (const lang of Object.keys(LANGS)) {
       const reason = needsTranslation(dir, lang, hash);
       if (reason) jobs.push({ slug: s, lang, reason, dir, hash });
@@ -265,6 +274,7 @@ async function main() {
   }
 
   console.log(`[translate] 모델 ${MODEL} · 대상 ${jobs.length}건${dryRun ? " (dry-run)" : ""}`);
+  if (drafts.length) console.log(`  (draft 라 건너뜀: ${drafts.join(", ")})`);
   for (const j of jobs) console.log(`  - ${j.slug}/${j.lang}.md — ${j.reason}`);
   if (dryRun || jobs.length === 0) return 0;
 
