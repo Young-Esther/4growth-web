@@ -62,16 +62,26 @@ const MONTH =
   "(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?|July?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)";
 const ISO = String.raw`\d{4}[.\-/]\s?\d{1,2}[.\-/]\s?\d{1,2}\.?`;
 
+/** 범위 구분자: ~ ～ - – — */
+const DASH = String.raw`\s*[~～\-–—]\s*`;
+
 /**
- * 언어별 날짜 표기. `count` 는 날짜 1건으로 세고, `strip` 은 세지 않고 지우기만 한다.
+ * 언어별 날짜 표기. `range` 는 시작일·종료일을 각각 1건(합 2건)으로 세고, `count` 는 날짜 1건으로 세고,
+ * `strip` 은 세지 않고 지우기만 한다. range → count → strip 순서로 지운다.
  * "9월" 처럼 연·일 없는 달은 EN 에서 "September"(숫자 없음)가 되므로 양쪽 다 세지 않는다.
  */
 const DATES = {
   ko: {
+    // 10월 8일~10일 · 2026년 10월 8일~10일 · 10월 30일~11월 2일
+    range: [String.raw`(?:\d{4}\s*년\s*)?\d{1,2}\s*월\s*\d{1,2}\s*일${DASH}(?:\d{1,2}\s*월\s*)?\d{1,2}\s*일`],
     count: [String.raw`\d{4}\s*년\s*\d{1,2}\s*월(?:\s*\d{1,2}\s*일)?`, String.raw`\d{1,2}\s*월\s*\d{1,2}\s*일`, ISO],
     strip: [String.raw`\d{1,2}\s*월`],
   },
   en: {
+    // October 8–10 · October 8–10, 2026 · October 30 – November 2, 2026
+    range: [
+      String.raw`${MONTH}\.?\s+\d{1,2}(?:st|nd|rd|th)?${DASH}(?:${MONTH}\.?\s+)?\d{1,2}(?:st|nd|rd|th)?(?:,?\s+\d{4})?`,
+    ],
     count: [
       String.raw`${MONTH}\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4}`,
       String.raw`\d{1,2}(?:st|nd|rd|th)?\s+(?:of\s+)?${MONTH}\.?,?\s+\d{4}`,
@@ -82,6 +92,8 @@ const DATES = {
     strip: [],
   },
   vi: {
+    // 8–10/10 · 8–10/10/2026
+    range: [String.raw`\d{1,2}${DASH}\d{1,2}/\d{1,2}(?:/\d{4})?`],
     count: [
       String.raw`ngày\s+\d{1,2}\s*(?:tháng\s+|/)\s*\d{1,2}(?:\s*(?:,?\s*năm\s+|/)\s*\d{4})?`,
       String.raw`\d{1,2}/\d{1,2}/\d{4}`,
@@ -109,8 +121,11 @@ export function tally(text, lang) {
   rest = rest.replace(URL_RE, " ").replace(LINK_TARGET_RE, " ");
   const placeholders = count(rest, PLACEHOLDER_RE);
   rest = rest.replace(PLACEHOLDER_RE, " ").replace(NAME_RE, " ");
+  const rangeRe = new RegExp(DATES[lang].range.join("|"), "giu");
+  let dates = count(rest, rangeRe) * 2;
+  rest = rest.replace(rangeRe, " ");
   const dateRe = new RegExp(DATES[lang].count.join("|"), "giu");
-  const dates = count(rest, dateRe);
+  dates += count(rest, dateRe);
   rest = rest.replace(dateRe, " ");
   for (const s of DATES[lang].strip) rest = rest.replace(new RegExp(s, "giu"), " ");
   const numbers = rest.match(NUMBER_RE) ?? [];
