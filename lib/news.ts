@@ -4,10 +4,10 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 import { routing, type Locale } from "@/i18n/routing";
-import { getHqList, getHqPost } from "@/lib/hq";
+import { getHqList, getHqPost, type Localized } from "@/lib/hq";
 
 /**
- * SPEC §3-5 — 소식. CMS 없이 파일로 관리한다.
+ * SPEC §3-5 — 소식. 4growth HQ 공개 API 의 글 + 저장소 파일 글(dlight-patent).
  *
  *   content/news/<slug>/ko.md   (필수)
  *   content/news/<slug>/en.md   (선택 — 없으면 ko 본문 + "한국어로만 제공" 안내)
@@ -17,7 +17,8 @@ import { getHqList, getHqPost } from "@/lib/hq";
  * ko.md 에 `draft: true` 가 있으면 그 글은 목록·상세·사이트맵 어디에도 나오지 않는다.
  * 빌드 서버에서만 호출한다 (node:fs).
  *
- * 여기에 4growth HQ 공개 API 의 글(lib/hq.ts)을 합친다. HQ 글은 한국어로만 쓰인다.
+ * 여기에 4growth HQ 공개 API 의 글(lib/hq.ts)을 합친다. HQ 가 그 언어 값(title·body_html)을 보내면
+ * 그 언어로, 없으면 ko 본문 + "한국어로만 제공" 안내로 보여 준다.
  * HQ 응답의 category 가 NEWS_CATEGORIES 중 하나가 아니면(없으면) '전체'에만 보인다.
  * slug 가 겹치면 파일 글이 이긴다.
  */
@@ -105,8 +106,9 @@ function resolve(slug: string, locale: Locale) {
   return { meta, content: file.content };
 }
 
-/** HQ 글의 로케일 대체 여부 — HQ 글은 한국어로만 쓰인다 */
-const hqFallback = (locale: Locale) => locale !== routing.defaultLocale;
+/** HQ 글의 이 언어 값 (ko 는 항상 있다). 없으면 undefined — ko + "한국어로만 제공" 으로 대체한다. */
+const inLocale = (value: Localized, locale: Locale) =>
+  locale === routing.defaultLocale ? value.ko : value[locale];
 
 const toCategory = (value: string | null): NewsCategory | null =>
   NEWS_CATEGORIES.find((c) => c === value) ?? null;
@@ -124,17 +126,19 @@ export async function getNewsList(locale: Locale): Promise<{ posts: NewsMeta[]; 
   const taken = new Set(files.map((m) => m.slug));
   const remote = hq.posts
     .filter((p) => !taken.has(p.slug))
-    .map(
-      (p): NewsMeta => ({
+    .map((p): NewsMeta => {
+      // 제목이 이 언어로 오면 그 언어로, 아니면 한국어로 (요약도 같은 언어에서만 가져온다)
+      const title = inLocale(p.title, locale);
+      return {
         slug: p.slug,
-        title: p.title,
+        title: title ?? p.title.ko,
         date: p.date,
         category: toCategory(p.category),
-        summary: p.excerpt,
+        summary: (title ? inLocale(p.excerpt, locale) : p.excerpt.ko) ?? "",
         cover: p.cover,
-        fallback: hqFallback(locale),
-      }),
-    );
+        fallback: !title,
+      };
+    });
 
   const posts = [...files, ...remote].sort((a, b) =>
     a.date < b.date ? 1 : a.date > b.date ? -1 : 0,
@@ -173,21 +177,27 @@ export async function getNewsPost(slug: string, locale: Locale): Promise<NewsPos
   const item = list.posts.find((p) => p.slug === slug);
   const cover = item?.cover ?? post.images[0];
 
+  // 제목과 본문이 둘 다 이 언어로 왔을 때만 그 언어로 보여 준다 (한 페이지에 언어를 섞지 않는다)
+  const ownTitle = inLocale(post.title, locale);
+  const ownHtml = inLocale(post.html, locale);
+  const own = Boolean(ownTitle && ownHtml);
+  const title = own ? ownTitle! : post.title.ko;
+  const html = own ? ownHtml! : post.html.ko;
+  const excerpt = item ? (own ? inLocale(item.excerpt, locale) : item.excerpt.ko) : undefined;
+
   return {
     status: "ok",
     post: {
       slug,
-      title: post.title,
+      title,
       date: post.date,
       category: toCategory(post.category ?? item?.category ?? null),
-      summary: item?.excerpt || plainText(post.html),
+      summary: excerpt || plainText(html),
       cover,
-      fallback: hqFallback(locale),
-      html: post.html,
+      fallback: !own,
+      html,
       // 커버나 본문에 이미 나온 이미지는 다시 보여 주지 않는다
-      images: post.images.filter(
-        (src) => src !== cover && !post.html.includes(new URL(src).pathname),
-      ),
+      images: post.images.filter((src) => src !== cover && !html.includes(new URL(src).pathname)),
     },
   };
 }

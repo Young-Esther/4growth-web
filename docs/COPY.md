@@ -235,13 +235,13 @@
 | (요약) 「재배 구역별 보광 제어 방법 및 보광 제어 시스템」 특허를 출원했습니다. | We filed a patent application for a zone-based supplemental lighting control method and system. | Chúng tôi đã nộp đơn sáng chế cho phương pháp và hệ thống điều khiển chiếu sáng bổ sung theo từng khu vực canh tác. |
 | (본문) 포그로우스는 2026년 8월 24일 「재배 구역별 보광 제어 방법 및 보광 제어 시스템」 특허를 출원했습니다. 자연광을 측정해 목표 광량에서 부족한 만큼만 LED로 보충하는 DLight의 제어 방법입니다. 환경부·한국환경산업기술원 「2026 청년그린창업 스프링캠프」 과제의 성과입니다. | On August 24, 2026, 4growth filed a patent application for a zone-based supplemental lighting control method and system. It covers DLight's control method, which measures natural light and uses LEDs to supply only what is missing from the target. The work is an outcome of the 2026 Youth Green Startup Spring Camp program of Korea's Ministry of Environment and KEITI. | Ngày 24/08/2026, 4growth đã nộp đơn sáng chế cho phương pháp và hệ thống điều khiển chiếu sáng bổ sung theo từng khu vực canh tác. Đây là phương pháp điều khiển của DLight: đo ánh sáng tự nhiên và chỉ dùng đèn LED bù phần còn thiếu so với mục tiêu. Kết quả này thuộc chương trình "2026 Youth Green Startup Spring Camp" của Bộ Môi trường Hàn Quốc và Viện Công nghệ Công nghiệp Môi trường Hàn Quốc (KEITI). |
 
-### 게시물: `vietnam-expo-2026` (event) — draft
+### 게시물: `vietnam-expo-2026` (event) — HQ 로 이관 (v0.4, md 삭제). 아래 문구는 HQ 작성 참고용
 | KO | EN | VI |
 |---|---|---|
 | `[박람회명]` 참가 | 4growth at `[Expo name]` | 4growth tham gia `[Tên triển lãm]` |
 | 포그로우스가 `[기간]` `[장소]`에서 열리는 `[박람회명]`에 참가합니다. 부스 `[번호]`에서 차담 기프트 세트를 선보입니다. | 4growth joins `[Expo name]`, `[dates]`, at `[venue]`. Visit booth `[No.]` to see the Chadam gift set. | 4growth tham gia `[Tên triển lãm]` diễn ra từ `[ngày]` tại `[địa điểm]`. Mời quý khách ghé gian hàng `[số]` để trải nghiệm bộ quà tặng trà Chadam. |
 
-### 게시물: `agri-expo-2026-09`, `chungnam-idea-final` — draft, 정보 확정 후 작성
+### 게시물: `agri-expo-2026-09`, `chungnam-idea-final` — HQ 로 이관 (v0.4, md 삭제)
 
 ---
 
