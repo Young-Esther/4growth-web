@@ -66,6 +66,11 @@
     }
   },
   "technology": {
+    "video": {
+      "tag": "Concept video",
+      "caption": "Start with one module, expand as you grow, use energy efficiently, and manage with AI.",
+      "label": "4growth technology introduction video"
+    },
     "stack": {
       "title": "Three technologies that make one farm",
       "body": "Growing space, light control, operational data. These are not separate products but one system that makes up a farm.",

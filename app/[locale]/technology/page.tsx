@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import TechVideo from "@/components/sections/TechVideo";
 import TechStack from "@/components/sections/TechStack";
 import TechDetail from "@/components/sections/TechDetail";
 import RnD from "@/components/sections/RnD";
@@ -19,13 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-/** SPEC §3-2 — v0.1 §3 TechStack + §4 세 기술 상세 + §6 R&D 를 순서 그대로 옮긴다. */
+/** SPEC §3-2 — 소개 영상(v0.3) + v0.1 §3 TechStack + §4 세 기술 상세 + §6 R&D 를 순서 그대로 옮긴다. */
 export default async function TechnologyPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
   return (
     <div className="pt-[72px]">
+      <TechVideo />
       <TechStack no="01" />
       <TechDetail />
       <RnD no="02" />

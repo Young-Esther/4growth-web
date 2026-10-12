@@ -91,6 +91,7 @@
 
 ### 3-2. 기술 `/technology`
 - v0.1 §3, §4(03-A·B·C), §6 순서 그대로. 카드 앵커 id: `a-block` `dlight` `farm-os` `rnd`.
+- 페이지 맨 위에 소개 영상(public/assets/video/promo.mp4)을 둔다. 자동재생하지 않는다. 영상 안 자막은 한국어이므로 EN/VI는 영상 아래 캡션으로 보완한다.
 - 상태 태그는 번역 문구로 표시한다. 의미는 절대 바꾸지 않는다 (`특허 출원` = Patent pending, "patented" 금지).
 - 이미지 안에 박힌 한글(I-03 구조도 라벨, S-01 Farm OS 화면)은 v0.2에서 그대로 둔다. EN/VI에서는 이미지 아래 캡션으로 라벨 목록을 번역해 보완한다 (COPY §기술 > 구조도 캡션).
 
@@ -129,6 +130,9 @@ v0.1 원칙(큰 사진, 짧은 문장, 여백)을 따른다. 이 페이지에만
   ```
   frontmatter: `title`, `date`(YYYY-MM-DD), `category`(`notice` | `event` | `award` | `press` | `product`, HQ 공개 API 의 category 와 같은 값), `summary`(1줄), `cover`(선택)
 - 파싱: `gray-matter` + `remark`/`remark-html`(또는 동급 경량 라이브러리). `generateStaticParams`로 정적 생성한다.
+- 소식은 항상 브랜치에서 ko.md만 작성한다. en/vi는 GitHub Actions가 자동 생성(auto: true). 사람이 번역을 고치면 auto: false로 바꾼다. main에 직접 소식을 올리지 않는다.
+  (`scripts/translate-news.mjs` · `.github/workflows/news-translate.yml`. 번역 파일 frontmatter `source_hash` = ko.md sha256 앞 12자리 — ko.md 가 바뀌면 auto: true 번역만 다시 만든다.)
+- draft 글은 번역하지 않는다. 게시(draft 제거) 시점에 번역된다.
 - 해당 로케일 파일이 없으면 ko 본문을 보여준다. 이때 상단에 안내 1줄을 띄운다 (COPY: "이 글은 한국어로만 제공됩니다").
 - **목록**: 페이지 헤더 + 카테고리 칩(전체 / 공지 / 행사 / 수상·선정 / 언론 보도 / 제품, `?category=`로 필터) + 카드 리스트. 날짜 내림차순. 카드에는 커버(있을 때만), 카테고리 pill, 날짜, 제목, 요약을 표시한다.
   - 글이 1건 이상 있는 카테고리만 칩을 표시한다.

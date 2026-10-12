@@ -1,0 +1,88 @@
+# SPEC §3-5 — 소식 자동 번역. 브랜치에 content/news/<slug>/ko.md 를 올리면 en.md·vi.md 를 만들어
+# 같은 브랜치에 커밋한다. main 에는 아무것도 쓰지 않는다 — 사람이 Preview 에서 확인한 뒤 머지한다.
+# 이 push 는 GITHUB_TOKEN 으로 하므로 이 워크플로를 다시 부르지 않고, Vercel 은 Preview 를 다시 만든다.
+name: news-translate
+
+on:
+  push:
+    branches-ignore: [main]
+    paths: ["content/news/**/ko.md"]
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: "번역할 글 slug (비우면 전체 검사)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: news-translate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    # 수동 실행으로 main 을 고르더라도 main 에는 쓰지 않는다
+    if: github.ref_name != 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check ANTHROPIC_API_KEY
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error title=ANTHROPIC_API_KEY 가 없습니다::저장소 Settings → Secrets and variables → Actions → New repository secret 에서 ANTHROPIC_API_KEY 를 추가한 뒤 이 워크플로를 다시 실행하세요."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          # 로컬·Vercel 과 같은 Node 24 (npm 11). npm 10 은 이 lock 파일로 npm ci 를 거절한다.
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Translate
+        id: translate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+          SLUG: ${{ inputs.slug }}
+        run: |
+          set +e
+          if [ -n "$SLUG" ]; then
+            npm run news:translate -- --slug "$SLUG"
+          else
+            npm run news:translate
+          fi
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+
+      - run: npm run i18n:check
+
+      # 성공한 언어 파일은 실패한 것이 있어도 올린다 (실패는 마지막 단계에서 빨간불로 남는다)
+      - name: Commit and push
+        run: |
+          changes=$(git status --porcelain --untracked-files=all content/news)
+          if [ -z "$changes" ]; then
+            echo "번역으로 바뀐 파일이 없습니다."
+            exit 0
+          fi
+          echo "$changes"
+          slugs=$(echo "$changes" | sed -E 's#^.* content/news/([^/]+)/.*$#\1#' | sort -u | paste -sd' ' -)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/news
+          git commit -m "chore(news): auto-translate $slugs"
+          git push origin "HEAD:${{ github.ref_name }}"
+
+      - name: Fail on translation errors
+        if: steps.translate.outputs.status != '0'
+        run: |
+          echo "::error title=번역 실패::일부 언어 파일을 만들지 못했습니다. Translate 단계 로그의 ✗ 줄을 보세요."
+          exit 1

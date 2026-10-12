@@ -71,6 +71,13 @@
 
 ## 기술
 
+### 소개 영상 [v0.3]
+| KO | EN | VI |
+|---|---|---|
+| 콘셉트 영상 | Concept video | Video ý tưởng |
+| 1평으로 시작하고, 모듈로 확장하고, 에너지는 효율적으로, 관리는 AI와. | Start with one module, expand as you grow, use energy efficiently, and manage with AI. | Bắt đầu từ một mô-đun, mở rộng theo nhu cầu, sử dụng năng lượng hiệu quả và quản lý cùng AI. |
+| (video aria-label) 포그로우스 기술 소개 영상 | 4growth technology introduction video | Video giới thiệu công nghệ 4growth |
+
 ### 스택
 | KO | EN | VI |
 |---|---|---|
