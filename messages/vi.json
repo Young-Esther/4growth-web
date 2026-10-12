@@ -66,6 +66,11 @@
     }
   },
   "technology": {
+    "video": {
+      "tag": "Video ý tưởng",
+      "caption": "Bắt đầu từ một mô-đun, mở rộng theo nhu cầu, sử dụng năng lượng hiệu quả và quản lý cùng AI.",
+      "label": "Video giới thiệu công nghệ 4growth"
+    },
     "stack": {
       "title": "Ba công nghệ tạo nên một trang trại",
       "body": "Không gian canh tác, điều khiển ánh sáng, dữ liệu vận hành. Ba công nghệ này không phải là sản phẩm bán riêng lẻ, mà là một hệ thống thống nhất tạo nên một trang trại.",
