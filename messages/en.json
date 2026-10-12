@@ -216,10 +216,11 @@
     "body": "Exhibitions, field trials and installations.",
     "categories": {
       "all": "All",
-      "event": "Exhibitions & Events",
-      "trial": "Trials & Installations",
-      "award": "Selections & Awards",
-      "notice": "Notices"
+      "notice": "Notices",
+      "event": "Events",
+      "award": "Awards & Selections",
+      "press": "Press",
+      "product": "Products"
     },
     "backToList": "Back to list",
     "koreanOnly": "This article is available in Korean only.",

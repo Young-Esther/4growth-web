@@ -17,11 +17,13 @@ import { getHqList, getHqPost } from "@/lib/hq";
  * ko.md 에 `draft: true` 가 있으면 그 글은 목록·상세·사이트맵 어디에도 나오지 않는다.
  * 빌드 서버에서만 호출한다 (node:fs).
  *
- * 여기에 4growth HQ 공개 API 의 글(lib/hq.ts)을 합친다. HQ 글은 카테고리가 없고 한국어로만 쓰인다.
+ * 여기에 4growth HQ 공개 API 의 글(lib/hq.ts)을 합친다. HQ 글은 한국어로만 쓰인다.
+ * HQ 응답의 category 가 NEWS_CATEGORIES 중 하나가 아니면(없으면) '전체'에만 보인다.
  * slug 가 겹치면 파일 글이 이긴다.
  */
 
-export const NEWS_CATEGORIES = ["event", "trial", "award", "notice"] as const;
+/** 탭 순서. 4growth HQ 공개 API 의 category 와 같은 값을 쓴다. */
+export const NEWS_CATEGORIES = ["notice", "event", "award", "press", "product"] as const;
 export type NewsCategory = (typeof NEWS_CATEGORIES)[number];
 
 export type NewsMeta = {
@@ -29,7 +31,7 @@ export type NewsMeta = {
   title: string;
   /** YYYY-MM-DD */
   date: string;
-  /** HQ 글은 카테고리가 없다 — '전체'에만 보인다 */
+  /** HQ 글은 category 가 없을 수 있다 — 그때는 '전체'에만 보인다 */
   category: NewsCategory | null;
   summary: string;
   /** public/ 경로 또는 HQ 이미지 절대 URL */
@@ -106,6 +108,9 @@ function resolve(slug: string, locale: Locale) {
 /** HQ 글의 로케일 대체 여부 — HQ 글은 한국어로만 쓰인다 */
 const hqFallback = (locale: Locale) => locale !== routing.defaultLocale;
 
+const toCategory = (value: string | null): NewsCategory | null =>
+  NEWS_CATEGORIES.find((c) => c === value) ?? null;
+
 /**
  * 게시된 글 목록 (파일 + HQ), 날짜 내림차순.
  * `hqError` — HQ API 를 읽지 못했다. 파일 글은 그대로 나온다.
@@ -124,7 +129,7 @@ export async function getNewsList(locale: Locale): Promise<{ posts: NewsMeta[]; 
         slug: p.slug,
         title: p.title,
         date: p.date,
-        category: null,
+        category: toCategory(p.category),
         summary: p.excerpt,
         cover: p.cover,
         fallback: hqFallback(locale),
@@ -174,7 +179,7 @@ export async function getNewsPost(slug: string, locale: Locale): Promise<NewsPos
       slug,
       title: post.title,
       date: post.date,
-      category: null,
+      category: toCategory(post.category ?? item?.category ?? null),
       summary: item?.excerpt || plainText(post.html),
       cover,
       fallback: hqFallback(locale),

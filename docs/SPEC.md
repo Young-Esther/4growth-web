@@ -17,7 +17,7 @@
 | 현장(Field) | 별도 탭 없음. 홈에 유지 |
 | 차담 | 사업영역 > 브랜드 섹션 + 전용 페이지 `/business/chadam` |
 | 브랜드 확장 | 꽃양꽃색 등 이후 브랜드도 사업영역 > 브랜드 아래 카드+페이지로 추가. 브랜드 3개 이상이 되면 탭 분리 재검토 |
-| 소식 탭 | 이름 "소식 / News / Tin tức". 카테고리 4개. v0.5 백로그의 Projects는 여기로 흡수 |
+| 소식 탭 | 이름 "소식 / News / Tin tức". 카테고리 5개. v0.5 백로그의 Projects는 여기로 흡수 |
 
 ### 원칙 변경 기록
 - 기존: "제품은 A-Block · DLight · AI Farm OS 셋뿐."
@@ -127,10 +127,10 @@ v0.1 원칙(큰 사진, 짧은 문장, 여백)을 따른다. 이 페이지에만
   content/news/<slug>/vi.md   (선택)
   public/news/<slug>/cover.jpg (선택)
   ```
-  frontmatter: `title`, `date`(YYYY-MM-DD), `category`(`event` | `trial` | `award` | `notice`), `summary`(1줄), `cover`(선택)
+  frontmatter: `title`, `date`(YYYY-MM-DD), `category`(`notice` | `event` | `award` | `press` | `product`, HQ 공개 API 의 category 와 같은 값), `summary`(1줄), `cover`(선택)
 - 파싱: `gray-matter` + `remark`/`remark-html`(또는 동급 경량 라이브러리). `generateStaticParams`로 정적 생성한다.
 - 해당 로케일 파일이 없으면 ko 본문을 보여준다. 이때 상단에 안내 1줄을 띄운다 (COPY: "이 글은 한국어로만 제공됩니다").
-- **목록**: 페이지 헤더 + 카테고리 칩(전체 / 박람회·행사 / 실증·설치 / 선정·수상 / 공지, `?category=`로 필터) + 카드 리스트. 날짜 내림차순. 카드에는 커버(있을 때만), 카테고리 pill, 날짜, 제목, 요약을 표시한다.
+- **목록**: 페이지 헤더 + 카테고리 칩(전체 / 공지 / 행사 / 수상·선정 / 언론 보도 / 제품, `?category=`로 필터) + 카드 리스트. 날짜 내림차순. 카드에는 커버(있을 때만), 카테고리 pill, 날짜, 제목, 요약을 표시한다.
   - 글이 1건 이상 있는 카테고리만 칩을 표시한다.
 - **상세**: 카테고리 pill + 날짜 + 제목 + 커버 + 본문 + `목록으로`.
 - 날짜 형식: ko `2026.09.30` / en `Sep 30, 2026` / vi `30/09/2026`.

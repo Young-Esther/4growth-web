@@ -212,10 +212,11 @@
 | 소식 | News | Tin tức |
 | 박람회, 실증, 설치 소식을 전합니다. | Exhibitions, field trials and installations. | Tin tức về triển lãm, thử nghiệm thực địa và lắp đặt. |
 | 전체 | All | Tất cả |
-| 박람회·행사 | Exhibitions & Events | Triển lãm & Sự kiện |
-| 실증·설치 | Trials & Installations | Thử nghiệm & Lắp đặt |
-| 선정·수상 | Selections & Awards | Tuyển chọn & Giải thưởng |
 | 공지 | Notices | Thông báo |
+| 행사 | Events | Sự kiện |
+| 수상·선정 | Awards & Selections | Giải thưởng & Tuyển chọn |
+| 언론 보도 | Press | Báo chí |
+| 제품 | Products | Sản phẩm |
 | 목록으로 | Back to list | Quay lại danh sách |
 | 이 글은 한국어로만 제공됩니다. | This article is available in Korean only. | Bài viết này chỉ có bằng tiếng Hàn. |
 | 소식을 불러오지 못했습니다. | We couldn’t load the news. | Không thể tải tin tức. |

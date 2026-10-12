@@ -216,10 +216,11 @@
     "body": "박람회, 실증, 설치 소식을 전합니다.",
     "categories": {
       "all": "전체",
-      "event": "박람회·행사",
-      "trial": "실증·설치",
-      "award": "선정·수상",
-      "notice": "공지"
+      "notice": "공지",
+      "event": "행사",
+      "award": "수상·선정",
+      "press": "언론 보도",
+      "product": "제품"
     },
     "backToList": "목록으로",
     "koreanOnly": "이 글은 한국어로만 제공됩니다.",

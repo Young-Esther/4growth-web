@@ -1,7 +1,7 @@
 /**
  * 4growth HQ 공개 API — 소식. 서버에서만 호출하고 응답은 60초마다 갱신한다 (ISR).
  *
- *   GET {base}/api/public/4growth/posts         → [{ slug, title, excerpt, published_at, cover_url }]
+ *   GET {base}/api/public/4growth/posts         → [{ slug, title, excerpt, published_at, cover_url, category? }]
  *   GET {base}/api/public/4growth/posts/{slug}  → { title, body_html, images[], published_at, updated_at }
  *                                                  없는 slug 는 404 { error: "not found" }
  *
@@ -22,6 +22,8 @@ export type HqListItem = {
   /** YYYY-MM-DD (KST) */
   date: string;
   cover?: string;
+  /** notice | event | award | press | product. 2026-10-12 현재 HQ 응답에는 아직 없다. */
+  category: string | null;
 };
 
 export type HqPost = {
@@ -30,6 +32,7 @@ export type HqPost = {
   images: string[];
   /** YYYY-MM-DD (KST) */
   date: string;
+  category: string | null;
 };
 
 type Fetched = { status: "ok"; json: unknown } | { status: "not-found" } | { status: "error" };
@@ -91,7 +94,16 @@ export async function getHqList(): Promise<{ posts: HqListItem[]; error: boolean
     const title = str(item?.title);
     const date = toKstDate(item?.published_at);
     if (!slug || !title || !date) return [];
-    return [{ slug, title, date, excerpt: str(item?.excerpt), cover: toImageUrl(item?.cover_url) }];
+    return [
+      {
+        slug,
+        title,
+        date,
+        excerpt: str(item?.excerpt),
+        cover: toImageUrl(item?.cover_url),
+        category: str(item?.category) || null,
+      },
+    ];
   });
   return { posts, error: false };
 }
@@ -113,5 +125,5 @@ export async function getHqPost(
     .filter((u): u is string => Boolean(u));
   // 본문의 상대 경로 이미지(src="/uploads/…")는 사이트가 아니라 HQ 기준이다
   const html = str(data?.body_html).replace(/(\ssrc=["'])\/(?!\/)/g, `$1${BASE}/`);
-  return { status: "ok", post: { title, date, html, images } };
+  return { status: "ok", post: { title, date, html, images, category: str(data?.category) || null } };
 }

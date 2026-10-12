@@ -216,10 +216,11 @@
     "body": "Tin tức về triển lãm, thử nghiệm thực địa và lắp đặt.",
     "categories": {
       "all": "Tất cả",
-      "event": "Triển lãm & Sự kiện",
-      "trial": "Thử nghiệm & Lắp đặt",
-      "award": "Tuyển chọn & Giải thưởng",
-      "notice": "Thông báo"
+      "notice": "Thông báo",
+      "event": "Sự kiện",
+      "award": "Giải thưởng & Tuyển chọn",
+      "press": "Báo chí",
+      "product": "Sản phẩm"
     },
     "backToList": "Quay lại danh sách",
     "koreanOnly": "Bài viết này chỉ có bằng tiếng Hàn.",
