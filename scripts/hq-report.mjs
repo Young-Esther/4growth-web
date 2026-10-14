@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-// 복사본 — 원본은 4growth-hq 저장소 scripts/hq-report.mjs (npm run dev:scripts:export, 2026-10-13, 3142786). 여기서 고치지 말고 원본을 고쳐 다시 내보낸다.
+// 복사본 — 원본은 4growth-hq 저장소 scripts/hq-report.mjs (npm run dev:scripts:export, 2026-10-14, 87d480b). 여기서 고치지 말고 원본을 고쳐 다시 내보낸다.
 // Claude Code → HQ 보고 (M6-6). 과제가 끝나 보고를 쓰기 전에 한 번 실행한다.
 //
 //   node scripts/hq-report.mjs --file report.json
 //   node scripts/hq-report.mjs --summary "프로젝트 정리 비서 구현" --milestone M6-5 --done --commits 4f0ba43,bb561db --next "M6-6"
 //   node scripts/hq-report.mjs --task <과제 ID> --summary "…" --commits …   (hq-next.mjs로 받은 과제면 — 그 과제가 보고됨으로, 보고가 카드에 붙는다)
+//   … --pr https://github.com/…/pull/12   (클라우드 세션이 연 PR — 카드에 "PR 열기")
 //
-// report.json 모양: { project, milestone?, milestone_done?, summary, commits[], decisions?[{title, content, reason?}], next?, task_id? }
+// report.json 모양: { project, milestone?, milestone_done?, summary, commits[], decisions?[{title, content, reason?}], next?, task_id?, pr_url? }
 // 토큰은 .env(또는 .env.local)의 HQ_DEV_TOKEN, 주소는 HQ_URL(없으면 운영 서버). --url로 바꿀 수 있다.
 // 보고 실패는 치명적이지 않다 — 결과 한 줄을 보고문에 적는다. 실패면 종료 코드 1.
 import fs from 'node:fs';
@@ -60,6 +61,7 @@ if (opt('file')) {
 }
 report.project ??= DEFAULT_PROJECT;
 if (opt('task')) report.task_id = opt('task');
+if (opt('pr')) report.pr_url = opt('pr');
 
 if (!token) {
   console.log('HQ 보고 실패: HQ_DEV_TOKEN이 없음 (.env·.env.local)');

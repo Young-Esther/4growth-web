@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// 복사본 — 원본은 4growth-hq 저장소 scripts/hq-next.mjs (npm run dev:scripts:export, 2026-10-13, 3142786). 여기서 고치지 말고 원본을 고쳐 다시 내보낸다.
+// 복사본 — 원본은 4growth-hq 저장소 scripts/hq-next.mjs (npm run dev:scripts:export, 2026-10-14, 87d480b). 여기서 고치지 말고 원본을 고쳐 다시 내보낸다.
 // 다음 과제 (M6-6b): 사용자가 "다음 과제"라고 하면 실행한다. 이 저장소(토큰이 묶인 저장소)의 다음 개발 과제를 HQ에서 받아(claim)
 // 지시문과 참조 명세 전문을 출력한다. 출력된 지시문이 곧 이번 작업 지시다.
 //
 //   node scripts/hq-next.mjs              다음 과제 받기 (이미 받은 과제가 있으면 그것을 다시 보여 준다)
+//   node scripts/hq-next.mjs --task <과제 ID>      그 과제를 받기 (클라우드 세션 — HQ "시작"으로 진행 중이면 그대로 받는다)
 //   node scripts/hq-next.mjs --release <과제 ID>   받은 과제 내려놓기 (다시 ready로)
 //   node scripts/hq-next.mjs --json       받은 그대로(JSON)
 //
@@ -94,11 +95,15 @@ try {
     console.log(`과제 내려놓음 (${host}): ${r.title} → 준비(ready)`);
     process.exit(0);
   }
-  const r = await call('/api/dev/next');
+  if (has('task') && !opt('task')) throw new Error('--task 뒤에 과제 ID');
+  const r = await call('/api/dev/next', opt('task') ? { task_id: opt('task') } : {});
   if (has('json')) {
     console.log(JSON.stringify(r, null, 2));
   } else if (r.status === 'claimed' || r.status === 'in_progress') {
     printTask(r);
+  } else if (r.status === 'busy') {
+    // 같은 저장소의 다른 과제가 진행 중 (HQ "시작"으로 클라우드 세션이 하는 중이면 그 과제는 넘겨받지 않는다)
+    console.log(`진행 중: 「${r.task.title}」${r.task.cloud ? ' — 클라우드 세션에서 하는 중' : ''} — 끝나야 다음 과제를 받을 수 있음${r.task.session_url ? ` (세션 ${r.task.session_url})` : ''}`);
   } else if (r.status === 'waiting') {
     const deps = r.waiting_for.map((d) => `「${d.title}」(${d.repo ?? '?'}, ${STATUS[d.status] ?? d.status})`).join(', ');
     console.log(`대기 중: ${deps} 과제가 끝나야 함 — ${r.repo.name}(${r.repo.key})의 다음 과제 「${r.task.title}」${r.ready_count > 1 ? ` 외 ${r.ready_count - 1}개` : ''}`);
